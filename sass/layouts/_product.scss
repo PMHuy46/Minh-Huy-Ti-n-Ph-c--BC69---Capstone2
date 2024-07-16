@@ -1,0 +1,100 @@
+#product {
+
+    #filter_pet {
+        .filter_content {
+            background-color: pink;
+            border-radius: 15px;
+            padding-bottom: 10px;
+
+            >li {
+                padding-top: 15px;
+            }
+
+            .title {
+                padding: 5px 30px;
+                font-size: 18px;
+                font-weight: 600;
+            }
+
+            .filter_item {
+                margin: 0 3rem;
+
+                >li:not(:has(>div)) {
+                    padding: 10px 0 10px 4rem;
+                }
+            }
+        }
+
+    }
+
+    #filter_more {
+        display: flex;
+        justify-content: end;
+
+        select {
+            border-radius: 15px;
+            padding: 10px 20px;
+            width: 23%;
+        }
+    }
+
+    .col-3 {
+        padding: 10px 10px;
+    }
+
+    .pet_item {
+        position: relative;
+        padding: 20px;
+        border: 1px solid;
+        border-radius: 15px;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        background-color: pink;
+
+        //  margin:15px 30px;
+        img {
+            width: 100%;
+        }
+
+        .pet_info{
+            h4{
+                padding: 20px 0 ;
+                font-size: 20px;
+            }
+        }
+
+        span {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 20px;
+            padding: 3px 3px 10px 10px;
+            line-height: 15px;
+            background-color: red;
+            color: yellow;
+            border-radius: 0 0 0 16px;
+        }
+
+        .buyBtn {
+            @extend .btn-style
+        }
+    }
+
+    .pet:nth-child(n+5) {
+        display: none;
+    }
+
+    #showMore {
+        @extend .btn-style
+    }
+}
+
+.btn-style {
+    padding: 5px 15px;
+    font-size: 20px;
+    background: red;
+    border-radius: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    color: yellow;
+}
+
+//<i class="fa-solid fa-tag"></i> giảm giá

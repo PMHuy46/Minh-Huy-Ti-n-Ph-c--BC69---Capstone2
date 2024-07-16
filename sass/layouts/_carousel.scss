@@ -1,0 +1,22 @@
+#carousel {
+    margin: 20px 0;
+    
+    .item {
+        height: 30vh;
+        width: 60%;
+        margin: auto;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &::after {
+        content: "";
+        display: block;
+        margin-top: 20px;
+        width: 100%;
+        height: 2px;
+        background-color: rgb(243, 138, 212);
+    }
+}
