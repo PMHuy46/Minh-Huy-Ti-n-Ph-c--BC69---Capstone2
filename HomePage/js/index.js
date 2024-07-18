@@ -1,33 +1,42 @@
-
 const sun = document.querySelector('.gg-sun');
 const moon = document.querySelector('.gg-moon');
 const body = document.querySelector('body');
 
-sun.addEventListener('click', function () {
-    this.classList.toggle('active');
-    moon.classList.toggle('active');
-    body.classList.toggle('bg-dark');
-});
-moon.addEventListener('click', function () {
-    sun.classList.toggle('active');
-    this.classList.toggle('active');
-    body.classList.toggle('bg-dark');
-});
+// sun.addEventListener('click', function () {
+//     this.classList.toggle('active');
+//     moon.classList.toggle('active');
+//     body.classList.toggle('bg-dark');
+// });
+// moon.addEventListener('click', function () {
+//     sun.classList.toggle('active');
+//     this.classList.toggle('active');
+//     body.classList.toggle('bg-dark');
+// });
+
+
+
+let DSMua = []
+let count = 0
+let priceBill = 0
+let DSfilter = []
 
 //get and render ds từ 
 async function getValueOnMock() {
     try {
-        let resolve = await axios({
+        let result = await axios({
             method: "GET",
             url: `https://6680c8e056c2c76b495cbc78.mockapi.io/product`,
         })
-        renderDSPet(resolve.data)
+        DSfilter = result.data
+        return result.data
     } catch (error) {
         console.log(error)
     }
-
 }
-getValueOnMock()
+
+getValueOnMock().then(() => {
+    renderDSPet(DSfilter)
+})
 
 function renderDSPet(arr) {
     let content = ""
@@ -73,10 +82,6 @@ function renderDSPet(arr) {
     }
     document.querySelector(`.list_pet`).innerHTML = content
 }
-
-let DSMua = []
-let count = 0
-let priceBill = 0
 
 //btn buy
 function muaSP(idSP, price) {
@@ -189,12 +194,93 @@ const updateAPI = async () => {
     } catch (error) {
         console.log(error)
     }
-    getValueOnMock()
-    DSMua=[]
-    document.querySelector(`#soLuongDaChon`).innerHTML =`0`
-    document.querySelector(`#billInfo`).innerHTML =``
+    getValueOnMock().then(() => {
+        renderDSPet(DSfilter)
+    })
+    DSMua = []
+    document.querySelector(`#soLuongDaChon`).innerHTML = `0`
+    document.querySelector(`#billInfo`).innerHTML = ``
     document.querySelector(`#tongTien`).innerHTML = `0`
 }
-
 document.querySelector(`#thanhToanBill`).onclick = updateAPI;
 
+// filter
+//filter theo key
+async function filterByOption(value, type) {
+    let valueFind = removeVietnameseTones(value.toLowerCase().trim()); 
+    let typeFind = removeVietnameseTones(type.toLowerCase().trim()); 
+    let ktra = typeFind.split(" ")
+
+    let arrFiltered = []
+    try {
+        const data = await getValueOnMock();
+        if (ktra.length == 1) { 
+            arrFiltered = data.filter(item => {
+                let typeValue = removeVietnameseTones(item[`${ktra[0]}`].toLowerCase().trim());
+                return typeValue.includes(valueFind)
+            })
+        } else {
+            let arrType = data.filter(item => {
+                let typeValue = removeVietnameseTones(item.type.toLowerCase().trim());
+                return typeValue.includes(ktra[0])
+            })
+            arrFiltered = arrType.filter(item => {
+                let typeValue = removeVietnameseTones(item[`${ktra[1]}`].toLowerCase().trim());
+                return typeValue.includes(valueFind)
+            })
+        }
+        DSfilter = arrFiltered
+    } catch {
+        console.log("error")
+    }
+}
+
+//reset filter
+document.querySelector(`.resetFilter`).onclick = function () {
+    getValueOnMock().then(()=>{
+        renderDSPet(DSfilter)
+    })
+}
+// filter theo giá
+function sapXepDS(x, arr = DSfilter) {
+    let arr1 = arr.sort((a, b) => a.price * x - b.price * x)
+    renderDSPet(arr1)
+}
+
+// add event click cho thẻ 
+document.addEventListener("DOMContentLoaded", function () {
+    let links = document.querySelectorAll(".filterByValue");
+    let selectFil = document.querySelectorAll(".form-select");
+
+    selectFil.forEach(function (option) {
+        option.addEventListener("click", function (event) {
+            event.preventDefault();
+            let { value } = option
+            sapXepDS(value)
+        })
+    })
+    // Thêm sự kiện onclick cho từng thẻ <a>
+    links.forEach(function (link) {
+        link.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            let { text, title } = link;
+            filterByOption(text, title).then(() => {
+                renderDSPet(DSfilter)
+            })
+        });
+    });
+
+    window.addEventListener('scroll', function () {
+        const menu = document.getElementById('menu');
+        const ktra = document.getElementById('filter_pet');
+        const rect = ktra.getBoundingClientRect();
+        
+        // Kiểm tra xem menu đã cách mép trên 10px chưa
+        if (rect.top <= 120) {
+            menu.classList.add('fixed');
+        } else {
+            menu.classList.remove('fixed');
+        }
+    });
+});

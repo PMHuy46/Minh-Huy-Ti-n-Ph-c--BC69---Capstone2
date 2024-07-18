@@ -1,0 +1,27 @@
+footer {
+  background-color: rgba(135, 206, 250, 0.627);
+  padding: 50px 0;
+  border-radius: 10px 10px 0 0;
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+
+    .right a i {
+      text-align: center;
+      color: rgba(0, 0, 255, 0.526);
+      margin-left: 10px;
+      width: 54px;
+      height: 54px;
+      line-height: 54px;
+      border-radius: 50%;
+      background-color: rgba(255, 228, 196, 0.296);
+      transition: all 0.5s;
+    }
+
+    a:hover i {
+      color: white;
+      background-color: rgba(0, 255, 255, 0.672);
+    }
+  }
+}

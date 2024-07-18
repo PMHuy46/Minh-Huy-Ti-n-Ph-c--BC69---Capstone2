@@ -185,3 +185,32 @@ const updatePet = async () => {
   }
 };
 document.getElementById("capNhat").onclick = updatePet;
+
+// Hàm tìm kiếm Pet
+const seachPet = async (event) => {
+  const newKeyWord = removeVietnameseTones(
+    event.target.value.toLowerCase().trim()
+  );
+
+  try {
+    const response = await axios({
+      method: "GET",
+      url: "https://6692558e346eeafcf46c934b.mockapi.io/CAPSTONE2",
+    });
+
+    const arrPets = response.data;
+
+    const arrSeachPet = arrPets.filter((item) => {
+      const newTenPet = removeVietnameseTones(item.name.toLowerCase().trim());
+      return newTenPet.includes(newKeyWord);
+    });
+
+    console.log("arrSeachPet: ", arrSeachPet);
+    document.getElementById("renderCards").innerHTML = renderArrPet(arrSeachPet);
+  } catch (error) {
+    showError("Có lỗi xảy ra vui lòng thử lại !");
+  }
+};
+
+// Thêm event listener cho input tìm kiếm
+document.getElementById("seach").oninput = seachPet;

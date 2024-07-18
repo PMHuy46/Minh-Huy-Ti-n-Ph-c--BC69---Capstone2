@@ -2,26 +2,44 @@
 
     #filter_pet {
         .filter_content {
+        &.fixed {
+            position: fixed;
+            top: 110px;
+            z-index: 1000;
+            width: 310px;
+        }
+
             background-color: pink;
             border-radius: 15px;
             padding-bottom: 10px;
 
             >li {
-                padding-top: 15px;
+                padding-top: 10px;
             }
 
             .title {
                 padding: 5px 30px;
-                font-size: 18px;
-                font-weight: 600;
+                font-size: 20px;
+                font-weight: 700;
             }
 
             .filter_item {
                 margin: 0 3rem;
 
                 >li:not(:has(>div)) {
-                    padding: 10px 0 10px 4rem;
+                    margin: 10px 0 10px 4rem;
+                    ;
+                    font-weight: 600;
+                    list-style: disc;
                 }
+            }
+
+
+
+            .resetFilter {
+                @extend .btn-style;
+                border: 0;
+
             }
         }
 
@@ -55,13 +73,15 @@
             width: 100%;
         }
 
-        .pet_info{
+        .pet_info {
             padding-top: 10px;
-            h4{
+
+            h4 {
                 font-size: 20px;
                 height: 50px;
             }
-            div{
+
+            div {
                 display: flex;
                 justify-content: space-between;
                 height: 35px;
@@ -81,11 +101,11 @@
         }
 
         .buyBtn {
-            @extend .btn-style
+            @extend .btn-style;
         }
     }
 
-    .pet:nth-child(n+5) {
+    .pet:nth-child(n+9) {
         display: none;
     }
 

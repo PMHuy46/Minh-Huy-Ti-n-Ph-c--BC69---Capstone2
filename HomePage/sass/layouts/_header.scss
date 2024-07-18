@@ -1,6 +1,10 @@
 header {
     font-weight: 600;
-
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    top: 0;
+    background-color:#590010;
     .navbar-brand {
         display: flex;
         gap: 10px;
