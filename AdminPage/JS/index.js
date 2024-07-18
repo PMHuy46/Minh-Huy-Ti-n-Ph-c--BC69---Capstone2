@@ -86,8 +86,13 @@ const renderArrPet = (arr) => {
             }</p>
           </div>
           <div class='m-4'>
-            <button id='xoa'class='btn'>Xóa</button>
-            <button id='sua'class='btn'>Sửa</button>
+            <button onclick= "deletePet(${
+              pet.id
+            })" id='xoa'class='btn'>Xóa</button>
+          
+            <button onclick="editPet(${
+              pet.id
+            })" id='sua'class='btn'>Sửa</button>
           </div>
         </div>
       </div>
@@ -120,7 +125,63 @@ const addPetApi = (event) => {
       getAllThuCung();
     })
     .catch((error) => {
-      showError(error.response.data);
+      showError("Có lỗi xảy ra vui lòng thử lại !");
     });
+  event.target.reset();
 };
 document.querySelector(".form").onsubmit = addPetApi;
+
+// Xóa pet
+const deletePet = async (idPet) => {
+  console.log("idPet: ", idPet);
+
+  try {
+    const result = await axios({
+      method: "DELETE",
+      url: `https://6692558e346eeafcf46c934b.mockapi.io/CAPSTONE2/${idPet}`,
+    });
+
+    getAllThuCung();
+  } catch (error) {
+    showError("Có lỗi xảy ra vui lòng thử lại !");
+  }
+};
+
+// chức năng nút sửa
+const editPet = async (idPet) => {
+  try {
+    const result = await axios({
+      method: "GET",
+      url: `https://6692558e346eeafcf46c934b.mockapi.io/CAPSTONE2/${idPet}`,
+    });
+
+    const arrField = document.querySelectorAll(".form input, .form select");
+
+    for (let field of arrField) {
+      let { id } = field;
+
+      field.value = result.data[id];
+    }
+  } catch (error) {
+    showError("Có lỗi xảy ra vui lòng thử lại !");
+  }
+};
+
+// chức năng nút cập nhật
+const updatePet = async () => {
+  try {
+    const pet = getInfoForm();
+
+    const result = await axios({
+      method: "PUT",
+      url: `https://6692558e346eeafcf46c934b.mockapi.io/CAPSTONE2/${pet.id}`,
+      data: pet,
+    });
+
+    getAllThuCung();
+    document.querySelector(".form").reset();
+  } catch (error) {
+    showError("Có lỗi xảy ra vui lòng thử lại !");
+  }
+};
+document.getElementById("capNhat").onclick = updatePet;

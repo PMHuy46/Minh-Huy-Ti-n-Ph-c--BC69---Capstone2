@@ -24,10 +24,13 @@ header {
         .search {
             position: relative;
 
-            .btn {
+            .btnSearch {
                 position: absolute;
                 top: 0;
                 right: 0;
+                border: 0;
+                transform: translate(-7px, 3px);
+                background: none;
             }
         }
 
@@ -39,24 +42,24 @@ header {
             box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
             .info_cart {
-                display: flex;
-                align-items: center;
-                gap: 5px;
-            }
+                position: relative;
 
-            span {
-                font-size: 15px;
-                text-align: end;
-                line-height: 15px;
+                #soLuongDaChon {
+                    position: absolute;
+                    right: -5px;
+                    bottom: 0;
+                    background-color: rgba(255, 255, 255, 0.65);
+                    color: black;
+                    padding: 0px 5px;
+                    border-radius: 50%;
+                    font-size: 11px;
+                    font-weight: 800;
+                }
             }
         }
 
         .icon_theme {
-            // position: relative;
-
             i {
-                // position: absolute;
-                // top: 50%;
                 cursor: pointer;
                 z-index: 1;
                 opacity: 0;
@@ -70,3 +73,4 @@ header {
         }
     }
 }
+

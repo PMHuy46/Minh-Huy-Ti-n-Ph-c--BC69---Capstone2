@@ -74,6 +74,7 @@
           <!-- Name  -->
           <div class="mb-3">
             <input
+              autocomplete="off"
               type="text"
               class="form-control"
               id="name"
@@ -84,6 +85,7 @@
           <!-- Price  -->
           <div class="mb-3">
             <input
+              autocomplete="off"
               type="number"
               class="form-control"
               id="price"
@@ -95,6 +97,7 @@
           <!-- origin  -->
           <div class="mb-3">
             <input
+              autocomplete="off"
               type="text"
               class="form-control"
               id="origin"
@@ -105,6 +108,7 @@
           <!-- img  -->
           <div class="mb-3">
             <input
+              autocomplete="off"
               type="text"
               class="form-control"
               id="img"
@@ -115,6 +119,7 @@
           <!-- desc  -->
           <div class="mb-3">
             <input
+              autocomplete="off"
               type="text"
               class="form-control"
               id="desc"
@@ -125,6 +130,7 @@
           <!-- type  -->
           <div class="mb-3">
             <input
+              autocomplete="off"
               type="text"
               class="form-control"
               id="type"
@@ -150,12 +156,24 @@
             </select>
           </div>
 
+          <!-- id  -->
+          <div class="mb-3">
+            <input
+              autocomplete="off"
+              type="number"
+              disabled
+              class="form-control text-center"
+              id="id"
+              placeholder="<ID: Mặc định>"
+            />
+          </div>
+
           <div class="button">
             <button type="submit" class="btnForm btn btn-info">
               Thêm thú cưng
             </button>
 
-            <button type="button" class="btnForm btn btn-warning">
+            <button type="button" id="capNhat" class="btnForm btn btn-warning">
               Cập nhật
             </button>
           </div>
@@ -165,9 +183,21 @@
 
     <!-- render card  -->
     <section class="renderCard">
-      <h3 class="pt-5 text-center text-info fs-4 fw-bolder mb-5">
-        Danh sách thú cưng
-      </h3>
+      <div class="container">
+        <h3 class="pt-5 text-center text-info fs-4 fw-bolder mb-5">
+          Danh sách thú cưng
+        </h3>
+
+        <div class="mb-3">
+          <input
+            type="text"
+            class="form-control"
+            id="seach"
+            aria-describedby="helpId"
+            placeholder="<Nhập tên của thú cưng muốn tìm nhé !!!>"
+          />
+        </div>
+      </div>
       <div id="renderCards" class="container"></div>
       <h1 class="text-warning text-center p-5">_-End-_</h1>
     </section>

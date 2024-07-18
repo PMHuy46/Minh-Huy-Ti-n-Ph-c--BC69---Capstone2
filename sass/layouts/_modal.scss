@@ -1,0 +1,36 @@
+#yourBill {
+    .table {
+
+        th,
+        td {
+            vertical-align: middle;
+        }
+
+        .colDesc {
+            @extend .col-style;
+        }
+
+        .colSoLuong {
+            @extend .col-style;
+            align-items: center;
+
+            .btn{
+                font-size: 2rem;
+                line-height: 1rem;
+                padding:6px;
+                padding-bottom: 10px;
+            }
+            .btn:first-of-type{
+                padding: 8px 10px;
+            }
+        }
+
+    }
+
+}
+
+.col-style {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}

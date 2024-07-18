@@ -47,17 +47,18 @@
                             <a class="nav-link " aria-current="page" href="#"><span>Home</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-disabled="true"><span>ADMIN</span></a>
+                            <a class="nav-link" aria-disabled="true"
+                                href="./AdminPage/index.html"><span>ADMIN</span></a>
                         </li>
                     </ul>
                     <form class="search" role="search">
                         <input class="search_in form-control me-2" type="search" placeholder="Enter Keyword"
                             aria-label="Search">
-                        <button class="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        <button class="btnSearch"><i class="fa-solid fa-magnifying-glass"></i></button>
                     </form>
-                    <button type="button" class="cart" data-bs-toggle="modal" data-bs-target="#yourBill">
+                    <button type="button" class="cart" id="payCart" data-bs-toggle="modal" data-bs-target="#yourBill">
                         <div class="info_cart">
-                            <span>0 Bé <br> 0 Đồng</span>
+                            <span id="soLuongDaChon">0</span>
                             <i class="fa-solid fa-cart-shopping"></i>
                         </div>
                     </button>
@@ -152,11 +153,11 @@
                         </select>
                     </div>
                     <div class="list_pet row">
-                       
+                       <!-- danh sách các sp có trên API  -->
                     </div>
                     <div class="col-12 text-center my-5">
                         <div class="button">
-                            <button id="showMore"><span>Show More</span></button>
+                            <button id="showMore" onclick=""><span>Show More</span></button>
                         </div>
                     </div>
                 </div>
@@ -236,11 +237,10 @@
             </div>
         </div>
     </footer> -->
-
-
+    
     <!-- Modal -->
     <div class="modal fade" id="yourBill" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog" style="max-width: 32%;" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Hóa đơn của bạn</h1>
@@ -252,59 +252,16 @@
                             <tr>
                                 <th>STT</th>
                                 <th colspan="2">Thông tin</th>
-                                <th>Số lượng</th>
+                                <th width="100px" style="text-align: center;">Số lượng</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>
-                                    <img src="https://lh3.google.com/u/0/d/1gO6LWK8L8Fv3CfrhTMf4YZyKZRreY1rC=w1920-h928-iv1"
-                                        alt="" width="100px">
-                                </td>
-                                <td class="align-middle">
-
-                                    <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam, earum.</span>
-
-                                </td>
-                                <td class="align-middle">
-                                    <div class="d-flex flex-column align-items-center gap-2">
-                                        <input type="text" name="soLuong" id="soLuong" value="1" style="width: 40px;">
-                                        <div class="changeSoLuong ">
-                                            <button>-</button>
-                                            <button>+</button>
-                                        </div>
-                                    </div>
-
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>
-                                    <img src="https://lh3.google.com/u/0/d/1gO6LWK8L8Fv3CfrhTMf4YZyKZRreY1rC=w1920-h928-iv1"
-                                        alt="" width="100px">
-                                </td>
-                                <td class="align-middle">
-
-                                    <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam, earum.</span>
-
-                                </td>
-                                <td class="align-middle">
-                                    <div class="d-flex flex-column align-items-center gap-2">
-                                        <input type="text" name="soLuong" id="soLuong" value="1" style="width: 40px;">
-                                        <div class="changeSoLuong ">
-                                            <button>-</button>
-                                            <button>+</button>
-                                        </div>
-                                    </div>
-
-                                </td>
-                            </tr>
+                        <tbody id="billInfo">
+                         <!-- thông tin hóa đơn -->
                         </tbody>
                         <tfoot>
                             <tr>
                                 <td colspan="3">Tổng tiền</td>
-                                <td></td>
+                                <td id="tongTien">0</td>
                             </tr>
                         </tfoot>
                     </table>
@@ -312,12 +269,13 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Đóng</button>
-                    <button type="button" class="btn btn-danger">Thanh toán</button>
+                    <button type="button" class="btn btn-danger" id="thanhToanBill" data-bs-dismiss="modal">Thanh toán</button>
                 </div>
             </div>
         </div>
     </div>
 
+    <button onclick="confirmAction()"> click</button>
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
