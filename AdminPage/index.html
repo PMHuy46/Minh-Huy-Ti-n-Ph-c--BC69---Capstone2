@@ -1,253 +1,254 @@
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <title>Title</title>
-      <!-- Required meta tags -->
-      <meta charset="utf-8" />
-      <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1, shrink-to-fit=no"
-      />
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
-      <!-- Bootstrap CSS v5.2.1 -->
-      <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-        crossorigin="anonymous"
-      />
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
 
-      <!-- FontAwesome 6.2.0 CSS -->
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer"
-      />
+    <!-- FontAwesome 6.2.0 CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
-      <!-- toastify css  -->
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.6.1/toastify.css"
-        integrity="sha512-VSD3lcSci0foeRFRHWdYX4FaLvec89irh5+QAGc00j5AOdow2r5MFPhoPEYBUQdyarXwbzyJEO7Iko7+PnPuBw=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer"
-      />
+    <!-- toastify css  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.6.1/toastify.css"
+      integrity="sha512-VSD3lcSci0foeRFRHWdYX4FaLvec89irh5+QAGc00j5AOdow2r5MFPhoPEYBUQdyarXwbzyJEO7Iko7+PnPuBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
-      <!-- Link SCSS dev -->
-      <link rel="stylesheet" href="./SASS/css/main.css" />
-    </head>
+    <!-- Link SCSS dev -->
+    <link rel="stylesheet" href="./SASS/css/main.css" />
+  </head>
 
-    <body>
-      <header>
-        <div class="container">
-          <div class="navbar-brand" href="#">
-            <img class="logo" src="./img/Capture.PNG" alt="logo" />
-            <h1>Admin Page Sen & Boss</h1>
-          </div>
-
-          <div class="navbar-collapse">
-            <ul class="navbar-nav">
-              <li class="nav-item active">
-                <a href="#"><span>Admin Page</span></a>
-              </li>
-
-              <li class="nav-item">
-                <a href="./../Minh-Huy-Ti-n-Ph-c--BC69---Capstone2/index.html"
-                  ><span>Home Page</span></a
-                >
-              </li>
-            </ul>
-          </div>
+  <body>
+    <header>
+      <div class="container">
+        <div class="navbar-brand" href="#">
+          <img class="logo" src="./img/Capture.PNG" alt="logo" />
+          <h1>Admin Page Sen & Boss</h1>
         </div>
-      </header>
 
-      <!-- form  -->
-      <section class="formThuCung">
-        <h2 class="text-center text-info fs-4 fw-normal">
-          Form điền thông tin thú cưng
-        </h2>
+        <div class="navbar-collapse">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a href="#"><span>Admin Page</span></a>
+            </li>
 
-        <div class="container">
-          <form class="form">
-            <!-- Name  -->
-            <div class="mb-3">
-              <input
-                autocomplete="off"
-                type="text"
-                class="form-control"
-                id="name"
-                placeholder="<Nhập tên thú cưng>"
-              />
-            </div>
-
-            <!-- Price  -->
-            <div class="mb-3">
-              <input
-                autocomplete="off"
-                type="number"
-                class="form-control"
-                id="price"
-                aria-describedby="helpId"
-                placeholder="<Nhập giá thú cưng>"
-              />
-            </div>
-
-            <!-- origin  -->
-            <div class="mb-3">
-              <input
-                autocomplete="off"
-                type="text"
-                class="form-control"
-                id="origin"
-                placeholder="<Nhập xuất xứ của thú cưng>"
-              />
-            </div>
-
-            <!-- img  -->
-            <div class="mb-3">
-              <input
-                autocomplete="off"
-                type="text"
-                class="form-control"
-                id="img"
-                placeholder="<Nhập link ảnh thú cưng>"
-              />
-            </div>
-
-            <!-- desc  -->
-            <div class="mb-3">
-              <input
-                autocomplete="off"
-                type="text"
-                class="form-control"
-                id="desc"
-                placeholder="<Miêu tả ngắn cho thú cưng>"
-              />
-            </div>
-
-            <!-- type  -->
-            <div class="mb-3">
-              <input
-                autocomplete="off"
-                type="text"
-                class="form-control"
-                id="type"
-                placeholder="<Nhập giống loài của thú cưng>"
-              />
-            </div>
-
-            <!-- best sale  -->
-            <div class="mb-3">
-              <select class="form-select form-select-lg" id="bestSale">
-                <option selected>Best sale</option>
-                <option value="true">True</option>
-                <option value="false">False</option>
-              </select>
-            </div>
-
-            <!-- species  -->
-            <div class="mb-3">
-              <select class="form-select form-select-lg" id="species">
-                <option selected>Loại thú cưng</option>
-                <option value="Chó">Chó</option>
-                <option value="Mèo">Mèo</option>
-              </select>
-            </div>
-
-            <!-- id  -->
-            <div class="mb-3">
-              <input
-                autocomplete="off"
-                type="number"
-                disabled
-                class="form-control text-center"
-                id="id"
-                placeholder="<ID: Mặc định>"
-              />
-            </div>
-
-            <div class="button">
-              <button type="submit" class="btnForm btn btn-info">
-                Thêm thú cưng
-              </button>
-
-              <button type="button" id="capNhat" class="btnForm btn btn-warning">
-                Cập nhật
-              </button>
-            </div>
-          </form>
+            <li class="nav-item">
+              <a href="./../Minh-Huy-Ti-n-Ph-c--BC69---Capstone2/index.html"
+                ><span>Home Page</span></a
+              >
+            </li>
+          </ul>
         </div>
-      </section>
+      </div>
+    </header>
 
-      <!-- render card  -->
-      <section class="renderCard">
-        <div class="container">
-          <h3 class="pt-5 text-center text-info fs-4 fw-bolder mb-5">
-            Danh sách thú cưng
-          </h3>
+    <!-- form  -->
+    <section class="formThuCung">
+      <h2 class="text-center text-info fs-4 fw-normal">
+        Form điền thông tin thú cưng
+      </h2>
 
+      <div class="container">
+        <form class="form">
+          <!-- Name  -->
           <div class="mb-3">
             <input
+              autocomplete="off"
               type="text"
               class="form-control"
-              id="seach"
-              aria-describedby="helpId"
-              placeholder="<Nhập tên của thú cưng muốn tìm nhé !!!>"
+              id="name"
+              placeholder="<Nhập tên thú cưng>"
             />
           </div>
+
+          <!-- Price  -->
+          <div class="mb-3">
+            <input
+              autocomplete="off"
+              type="number"
+              class="form-control"
+              id="price"
+              aria-describedby="helpId"
+              placeholder="<Nhập giá thú cưng>"
+            />
+          </div>
+
+          <!-- origin  -->
+          <div class="mb-3">
+            <input
+              autocomplete="off"
+              type="text"
+              class="form-control"
+              id="origin"
+              placeholder="<Nhập xuất xứ của thú cưng>"
+            />
+          </div>
+
+          <!-- img  -->
+          <div class="mb-3">
+            <input
+              autocomplete="off"
+              type="text"
+              class="form-control"
+              id="img"
+              placeholder="<Nhập link ảnh thú cưng>"
+            />
+          </div>
+
+          <!-- desc  -->
+          <div class="mb-3">
+            <input
+              autocomplete="off"
+              type="text"
+              class="form-control"
+              id="desc"
+              placeholder="<Miêu tả ngắn cho thú cưng>"
+            />
+          </div>
+
+          <!-- type  -->
+          <div class="mb-3">
+            <input
+              autocomplete="off"
+              type="text"
+              class="form-control"
+              id="type"
+              placeholder="<Nhập giống loài của thú cưng>"
+            />
+          </div>
+
+          <!-- best sale  -->
+          <div class="mb-3">
+            <select class="form-select form-select-lg" id="bestSale">
+              <option selected>Best sale</option>
+              <option value="true">True</option>
+              <option value="false">False</option>
+            </select>
+          </div>
+
+          <!-- species  -->
+          <div class="mb-3">
+            <select class="form-select form-select-lg" id="species">
+              <option selected>Loại thú cưng</option>
+              <option value="Chó">Chó</option>
+              <option value="Mèo">Mèo</option>
+            </select>
+          </div>
+
+          <!-- id  -->
+          <div class="mb-3">
+            <input
+              autocomplete="off"
+              type="number"
+              disabled
+              class="form-control text-center"
+              id="id"
+              placeholder="<ID: Mặc định>"
+            />
+          </div>
+
+          <div class="button">
+            <button type="submit" class="btnForm btn btn-info">
+              Thêm thú cưng
+            </button>
+
+            <button type="button" id="capNhat" class="btnForm btn btn-warning">
+              Cập nhật
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- render card  -->
+    <section class="renderCard">
+      <div class="container">
+        <h3 class="pt-5 text-center text-info fs-4 fw-bolder mb-5">
+          Danh sách thú cưng
+        </h3>
+
+        <div class="mb-3">
+          <input
+            type="text"
+            class="form-control"
+            id="search"
+            aria-describedby="helpId"
+            placeholder="<Nhập tên của thú cưng muốn tìm nhé !!!>"
+            oninput="searchPets()"
+          />
         </div>
-        <div id="renderCards" class="container"></div>
-        <h1 class="text-warning text-center p-5">_-End-_</h1>
-      </section>
+      </div>
+      <div id="renderCards" class="container"></div>
+      <h1 class="text-warning text-center p-5">_-End-_</h1>
+    </section>
 
-      <footer>
-        <div class="container">
-          <div class="content">
-            <div class="left">
-              <p>© 2024 CAPSTONE2_CYBERSOFT - BOSS AND SEN.</p>
-            </div>
+    <footer>
+      <div class="container">
+        <div class="content">
+          <div class="left">
+            <p>© 2024 CAPSTONE2_CYBERSOFT - BOSS AND SEN.</p>
+          </div>
 
-            <div class="right">
-              <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-              <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-              <a href="#"><i class="fa-brands fa-youtube"></i></a>
-              <a href="#"><i class="fa-brands fa-twitter"></i></a>
-            </div>
+          <div class="right">
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
           </div>
         </div>
-      </footer>
+      </div>
+    </footer>
 
-      <!-- Bootstrap JavaScript Libraries -->
-      <script
-        src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"
-      ></script>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
 
-      <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-        crossorigin="anonymous"
-      ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
 
-      <!-- axios  -->
-      <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.2/axios.min.js"
-        integrity="sha512-JSCFHhKDilTRRXe9ak/FJ28dcpOJxzQaCd3Xg8MyF6XFjODhy/YMCM8HW0TFDckNHWUewW+kfvhin43hKtJxAw=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer"
-      ></script>
+    <!-- axios  -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.2/axios.min.js"
+      integrity="sha512-JSCFHhKDilTRRXe9ak/FJ28dcpOJxzQaCd3Xg8MyF6XFjODhy/YMCM8HW0TFDckNHWUewW+kfvhin43hKtJxAw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
 
-      <!-- toastify js  -->
-      <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.6.1/toastify.js"
-        integrity="sha512-MnKz2SbnWiXJ/e0lSfSzjaz9JjJXQNb2iykcZkEY2WOzgJIWVqJBFIIPidlCjak0iTH2bt2u1fHQ4pvKvBYy6Q=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer"
-      ></script>
-      <script src="./../js/util.js"></script>
-      <script src="./JS/index.js"></script>
-    </body>
-  </html>
+    <!-- toastify js  -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.6.1/toastify.js"
+      integrity="sha512-MnKz2SbnWiXJ/e0lSfSzjaz9JjJXQNb2iykcZkEY2WOzgJIWVqJBFIIPidlCjak0iTH2bt2u1fHQ4pvKvBYy6Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="./UTIL/util.js"></script>
+    <script src="./JS/index.js"></script>
+  </body>
+</html>

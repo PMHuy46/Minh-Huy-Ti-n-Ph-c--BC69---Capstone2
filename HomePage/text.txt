@@ -9,3 +9,4 @@ https://drive.google.com/file/d/ID/view?usp=drive_link
 lấy cái ID trong cái link sửa theo cái ở dưới thì mới thêm được hình lên trang web nha
 
 https://lh3.google.com/u/0/d/"ở đây thêm id của cái hình"=w1920-h928-iv1
+

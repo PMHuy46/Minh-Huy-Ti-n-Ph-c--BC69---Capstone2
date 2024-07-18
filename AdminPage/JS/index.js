@@ -1,4 +1,4 @@
-// chức năng thông báo lỗi cho người dùng
+// Hàm thông báo lỗi
 const showError = (text, duration = 3000) => {
   Toastify({
     text: text,
@@ -13,172 +13,161 @@ const showError = (text, duration = 3000) => {
   }).showToast();
 };
 
-// lấy dữ liệu mock
-async function getAllThuCung() {
+// Lấy danh sách Pet
+async function getAllPets() {
   try {
-    const resolve = await axios({
+    const response = await axios({
       method: "GET",
       url: "https://6692558e346eeafcf46c934b.mockapi.io/CAPSTONE2",
     });
 
-    document.getElementById("renderCards").innerHTML = renderArrPet(
-      resolve.data
+    document.getElementById("renderCards").innerHTML = renderPetCards(
+      response.data
     );
 
-    console.log(resolve.data);
+    console.log(response.data);
   } catch (error) {
     showError("Có lỗi xảy ra vui lòng thử lại !");
   }
 }
-getAllThuCung();
 
-// lấy thông tin thẻ form
-const getInfoForm = () => {
-  let arrField = document.querySelectorAll(".form input, .form select");
-  let pet = {};
-  for (let field of arrField) {
-    // destructuring
-    let { id, value } = field;
+// lấy dữ liệu data
+const getFormData = () => {
+  let formData = {};
+  const formFields = document.querySelectorAll(".form input, .form select");
 
-    // dynamic key
-    pet[id] = value;
-  }
-  return pet;
+  formFields.forEach((field) => {
+    const { id, value } = field;
+    formData[id] = value;
+  });
+
+  return formData;
 };
 
-// Hàm renderArrPet
-const renderArrPet = (arr) => {
-  let content = "";
-  let count = 0;
+  // hàm renderCard
+  const renderPetCards = (petsArray) => {
+    let content = "";
+    let count = 0;
 
-  arr.forEach((pet, index) => {
-    let {
-      id,
-      name,
-      price,
-      bestSale,
-      img,
-      desc,
-      type,
-      origin,
-      species,
-      quantity,
-    } = pet;
+    petsArray.forEach((pet, index) => {
+      const {
+        id,
+        name,
+        price,
+        bestSale,
+        img,
+        desc,
+        type,
+        origin,
+        species,
+        quantity,
+      } = pet;
 
-    // Mỗi khi đạt đủ 3 card, thêm một dòng mới
-    if (count % 3 === 0) {
-      content += '<div class="row mb-4">';
-    }
+      if (count % 4 === 0) {
+        content += '<div class="row mb-4">';
+      }
 
-    content += `
-      <div class="col-md-4 mt-4">
-        <div class="card text-dark text-center">
-          <img src="${img}" class="card-img-top mx-auto mt-3" alt="${name}" style="width: 150px; height: 150px; object-fit: cover;">
-          <div class="card-body">
-            <h5 class="card-title">${name}</h5>
-            <p class="card-text"><strong>Giống:</strong> ${species}</p>
-            <p class="card-text"><strong>Giá:</strong> ${price}</p>
-            <p class="card-text">${desc}</p>
-            <p class="card-text"><strong>Loài:</strong> ${type}</p>
-            <p class="card-text"><strong>Xuất xứ:</strong> ${origin}</p>
-            <p class="card-text"><strong>Best Sale:</strong> ${
-              bestSale ? "Có" : "Không"
-            }</p>
-          </div>
-          <div class='m-4'>
-            <button onclick= "deletePet(${
-              pet.id
-            })" id='xoa'class='btn'>Xóa</button>
-          
-            <button onclick="editPet(${
-              pet.id
-            })" id='sua'class='btn'>Sửa</button>
+      content += `
+        <div class="col-md-3 mt-4">
+          <div class="card text-dark text-center">
+            <img src="${img}" class="card-img-top mx-auto mt-3" style="width: 200px; height: 130px; object-fit: cover; ">
+            <div class="card-body">
+              <h5 class="card-title">${name}</h5>
+              <p class="card-text"><strong>Giống:</strong> ${species}</p>
+              <p class="card-text"><strong>Giá:</strong> ${price}</p>
+              <p class="card-text">${desc}</p>
+              <p class="card-text"><strong>Loài:</strong> ${type}</p>
+              <p class="card-text"><strong>Xuất xứ:</strong> ${origin}</p>
+              <p class="card-text"><strong>Best Sale:</strong> ${
+                bestSale ? "Yes" : "No"
+              }</p>
+            </div>
+            <div class='m-4'>
+              <button id='xoa' onclick= "deletePet(${id})" class='btn'>Xóa</button>
+
+              <button id='sua' onclick="editPet(${id})" class='btn'>Sửa</button>
+            </div>
           </div>
         </div>
-      </div>
-    `;
+      `;
 
-    count++;
+      count++;
 
-    // Đóng dòng khi đủ 3 card hoặc khi đến cuối mảng
-    if (count % 3 === 0 || index === arr.length - 1) {
-      content += "</div>"; // Đóng row
-    }
-  });
+      if (count % 4 === 0 || index === petsArray.length - 1) {
+        content += "</div>";
+      }
+    });
 
-  return content;
-};
+    return content;
+  };
 
-// chức năng thêm pet
-const addPetApi = (event) => {
+// Hàm thêm Pet
+const addPet = (event) => {
   event.preventDefault();
 
-  const pet = getInfoForm();
+  const petData = getFormData();
 
-  let promise = axios({
+  axios({
     method: "POST",
     url: "https://6692558e346eeafcf46c934b.mockapi.io/CAPSTONE2",
-    data: pet,
-  });
-  promise
-    .then((resoleve) => {
-      getAllThuCung();
+    data: petData,
+  })
+    .then((response) => {
+      getAllPets();
     })
     .catch((error) => {
       showError("Có lỗi xảy ra vui lòng thử lại !");
     });
+
   event.target.reset();
 };
-document.querySelector(".form").onsubmit = addPetApi;
+document.querySelector(".form").onsubmit = addPet;
 
-// Xóa pet
-const deletePet = async (idPet) => {
-  console.log("idPet: ", idPet);
-
+// Hàm xóa Pet
+const deletePet = async (petId) => {
   try {
-    const result = await axios({
+    const response = await axios({
       method: "DELETE",
-      url: `https://6692558e346eeafcf46c934b.mockapi.io/CAPSTONE2/${idPet}`,
+      url: `https://6692558e346eeafcf46c934b.mockapi.io/CAPSTONE2/${petId}`,
     });
 
-    getAllThuCung();
+    getAllPets();
   } catch (error) {
     showError("Có lỗi xảy ra vui lòng thử lại !");
   }
 };
 
-// chức năng nút sửa
-const editPet = async (idPet) => {
+// Hàm nút sửa
+const editPet = async (petId) => {
   try {
-    const result = await axios({
+    const response = await axios({
       method: "GET",
-      url: `https://6692558e346eeafcf46c934b.mockapi.io/CAPSTONE2/${idPet}`,
+      url: `https://6692558e346eeafcf46c934b.mockapi.io/CAPSTONE2/${petId}`,
     });
 
-    const arrField = document.querySelectorAll(".form input, .form select");
+    const formFields = document.querySelectorAll(".form input, .form select");
 
-    for (let field of arrField) {
-      let { id } = field;
-
-      field.value = result.data[id];
-    }
+    formFields.forEach((field) => {
+      const { id } = field;
+      field.value = response.data[id];
+    });
   } catch (error) {
     showError("Có lỗi xảy ra vui lòng thử lại !");
   }
 };
 
-// chức năng nút cập nhật
+// Hàm nút cập nhật
 const updatePet = async () => {
   try {
-    const pet = getInfoForm();
+    const petData = getFormData();
 
-    const result = await axios({
+    const response = await axios({
       method: "PUT",
-      url: `https://6692558e346eeafcf46c934b.mockapi.io/CAPSTONE2/${pet.id}`,
-      data: pet,
+      url: `https://6692558e346eeafcf46c934b.mockapi.io/CAPSTONE2/${petData.id}`,
+      data: petData,
     });
 
-    getAllThuCung();
+    getAllPets();
     document.querySelector(".form").reset();
   } catch (error) {
     showError("Có lỗi xảy ra vui lòng thử lại !");
@@ -186,11 +175,12 @@ const updatePet = async () => {
 };
 document.getElementById("capNhat").onclick = updatePet;
 
-// Hàm tìm kiếm Pet
-const seachPet = async (event) => {
-  const newKeyWord = removeVietnameseTones(
-    event.target.value.toLowerCase().trim()
-  );
+// Hàm search Pet
+const searchPets = async () => {
+  const searchValue = document
+    .getElementById("search")
+    .value.trim()
+    .toLowerCase();
 
   try {
     const response = await axios({
@@ -198,19 +188,18 @@ const seachPet = async (event) => {
       url: "https://6692558e346eeafcf46c934b.mockapi.io/CAPSTONE2",
     });
 
-    const arrPets = response.data;
+    const filteredPets = response.data.filter((pet) =>
+      removeVietnameseTones(pet.name.toLowerCase()).includes(
+        removeVietnameseTones(searchValue)
+      )
+    );
 
-    const arrSeachPet = arrPets.filter((item) => {
-      const newTenPet = removeVietnameseTones(item.name.toLowerCase().trim());
-      return newTenPet.includes(newKeyWord);
-    });
-
-    console.log("arrSeachPet: ", arrSeachPet);
-    document.getElementById("renderCards").innerHTML = renderArrPet(arrSeachPet);
+    document.getElementById("renderCards").innerHTML =
+      renderPetCards(filteredPets);
   } catch (error) {
     showError("Có lỗi xảy ra vui lòng thử lại !");
   }
 };
 
-// Thêm event listener cho input tìm kiếm
-document.getElementById("seach").oninput = seachPet;
+// Gọi hàm lấy full danh sách Pet 
+getAllPets();

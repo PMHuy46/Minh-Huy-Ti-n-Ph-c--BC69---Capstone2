@@ -6,7 +6,9 @@
 // base
 @import "./base/reset";
 
-// components
+
+// Util
+// @import "./../UTIL/util.js";
 
 // layouts
 @import "./layouts/header";
@@ -14,4 +16,3 @@
 @import "./layouts/renderCard";
 @import "./layouts/footer";
 
-// pages
