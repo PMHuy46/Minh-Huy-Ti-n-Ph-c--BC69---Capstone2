@@ -17,6 +17,10 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  background-color: rgba(89, 0, 16, 0.3215686275);
+}
+
 .gg-sun {
   box-sizing: border-box;
   position: relative;
@@ -86,9 +90,20 @@ header {
   width: 100%;
   top: 0;
   background-color: #590010;
+  margin: auto;
 }
 header .col-11 {
   padding: 5px;
+}
+@media (max-width: 574px) {
+  header .col-11 {
+    width: 74%;
+  }
+}
+@media (max-width: 574px) and (max-width: 550px) {
+  header .col-11 {
+    width: 65%;
+  }
 }
 header .navbar-brand {
   display: flex;
@@ -101,11 +116,20 @@ header .navbar-brand img {
 }
 header .navbar-brand span {
   font-size: 40px;
+  color: white;
+}
+@media (max-width: 550px) {
+  header .navbar-brand span {
+    font-size: 30px;
+  }
 }
 header .navbar-collapse {
   font-size: 20px;
   justify-content: end;
   gap: 10px;
+}
+header .navbar-collapse .nav-link {
+  color: white;
 }
 header .navbar-collapse .search {
   position: relative;
@@ -156,7 +180,7 @@ header .col-1 .icon_theme i.active {
 }
 
 #carousel {
-  margin-top: 100px;
+  margin-top: 110px;
 }
 #carousel .item {
   height: 30vh;
@@ -177,74 +201,183 @@ header .col-1 .icon_theme i.active {
 }
 
 #product .container {
-  margin-left: 16%;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  color: white;
+}
+#product #filter_pet {
+  width: 300px;
+}
+@media (max-width: 1400px) {
+  #product #filter_pet {
+    width: 260px;
+  }
 }
 #product #filter_pet .filter_content {
-  background-color: pink;
+  background-color: #590010;
   border-radius: 15px;
-  padding-bottom: 10px;
+  padding: 10px 0;
 }
 #product #filter_pet .filter_content.fixed {
   position: fixed;
   top: 110px;
   z-index: 1000;
-  width: 310px;
+  width: 300px;
+  transition: transform 5s ease-in-out;
 }
-#product #filter_pet .filter_content > li {
-  padding-top: 10px;
+@media (max-width: 1400px) {
+  #product #filter_pet .filter_content.fixed {
+    width: 260px;
+  }
 }
 #product #filter_pet .filter_content .title {
   padding: 5px 30px;
   font-size: 20px;
   font-weight: 700;
 }
+@media (max-width: 1400px) {
+  #product #filter_pet .filter_content .title {
+    font-size: 18px;
+  }
+}
+@media (max-width: 1400px) and (max-width: 1200px) {
+  #product #filter_pet .filter_content .title {
+    padding-right: 0;
+  }
+}
+@media (max-width: 1400px) and (max-width: 1200px) and (max-width: 990px) {
+  #product #filter_pet .filter_content .title {
+    font-size: 16px;
+    padding-left: 25px;
+  }
+}
 #product #filter_pet .filter_content .filter_item {
   margin: 0 3rem;
+}
+@media (max-width: 990px) {
+  #product #filter_pet .filter_content .filter_item {
+    margin-left: 40px;
+  }
 }
 #product #filter_pet .filter_content .filter_item > li:not(:has(> div)) {
   margin: 10px 0 10px 4rem;
   font-weight: 600;
   list-style: disc;
 }
+@media (max-width: 1400px) {
+  #product #filter_pet .filter_content .filter_item > li:not(:has(> div)) {
+    font-size: 14px;
+  }
+}
+@media (max-width: 1400px) and (max-width: 990px) {
+  #product #filter_pet .filter_content .filter_item > li:not(:has(> div)) {
+    font-size: 14px;
+  }
+}
 #product #filter_pet .filter_content .resetFilter {
   border: 0;
 }
-#product #filter_more {
+#product #info_pet {
+  width: 75%;
+}
+@media (max-width: 1400px) {
+  #product #info_pet {
+    width: 80%;
+  }
+}
+#product #info_pet #filter_more {
   display: flex;
   justify-content: end;
 }
-#product #filter_more select {
+#product #info_pet #filter_more select {
   border-radius: 15px;
   padding: 10px 20px;
   width: 23%;
 }
-#product .col-3 {
-  padding: 10px 10px;
+@media (max-width: 1400px) {
+  #product #info_pet #filter_more select {
+    width: 25%;
+  }
 }
-#product .pet_item {
+@media (max-width: 1400px) and (max-width: 1200px) {
+  #product #info_pet #filter_more select {
+    width: 60%;
+  }
+}
+#product #info_pet .list_pet {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+}
+@media (max-width: 1400px) {
+  #product #info_pet .list_pet {
+    justify-content: space-evenly;
+  }
+}
+#product #info_pet .list_content {
+  padding: 10px 10px;
+  width: 25%;
+}
+@media (max-width: 1400px) {
+  #product #info_pet .list_content {
+    width: 30%;
+  }
+}
+@media (max-width: 1400px) and (max-width: 1200px) {
+  #product #info_pet .list_content {
+    width: 40%;
+  }
+}
+@media (max-width: 1400px) and (max-width: 1200px) and (max-width: 990px) {
+  #product #info_pet .list_content {
+    width: 50%;
+  }
+}
+@media (max-width: 1400px) and (max-width: 1200px) and (max-width: 990px) and (max-width: 768px) {
+  #product #info_pet .list_content {
+    width: 80%;
+  }
+}
+#product #info_pet .pet_item {
   position: relative;
   padding: 20px;
   border: 1px solid;
   border-radius: 15px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  background-color: pink;
+  background-color: #590010;
 }
-#product .pet_item img {
+@media (max-width: 1400px) {
+  #product #info_pet .pet_item {
+    width: 95%;
+  }
+}
+@media (max-width: 1400px) and (max-width: 1200px) {
+  #product #info_pet .pet_item {
+    width: 90%;
+  }
+}
+@media (max-width: 1400px) and (max-width: 1200px) and (max-width: 990px) {
+  #product #info_pet .pet_item {
+    width: 100%;
+  }
+}
+#product #info_pet .pet_item img {
   width: 100%;
 }
-#product .pet_item .pet_info {
+#product #info_pet .pet_item .pet_info {
   padding-top: 10px;
 }
-#product .pet_item .pet_info h4 {
+#product #info_pet .pet_item .pet_info h4 {
   font-size: 20px;
   height: 50px;
 }
-#product .pet_item .pet_info div {
+#product #info_pet .pet_item .pet_info div {
   display: flex;
   justify-content: space-between;
   height: 35px;
 }
-#product .pet_item .quangCao {
+#product #info_pet .pet_item .quangCao {
   position: absolute;
   top: 20px;
   right: 20px;
@@ -255,10 +388,10 @@ header .col-1 .icon_theme i.active {
   color: yellow;
   border-radius: 0 0 0 16px;
 }
-#product .pet:nth-child(n+9) {
+#product #info_pet .list_content:nth-child(n+9) {
   display: none;
 }
-.btn-style, #product #filter_pet .filter_content .resetFilter, #product .pet_item .buyBtn, #product #showMore {
+.btn-style, #product #filter_pet .filter_content .resetFilter, #product #info_pet .pet_item .buyBtn, #product #info_pet #showMore {
   padding: 5px 15px;
   font-size: 16px;
   background: red;
@@ -291,26 +424,27 @@ header .col-1 .icon_theme i.active {
 }
 
 footer {
-  background-color: rgba(135, 206, 250, 0.627);
+  background-color: #590010;
   padding: 50px 0;
   border-radius: 10px 10px 0 0;
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
 }
 footer .content {
   display: flex;
   justify-content: space-between;
 }
-footer .content .right a i {
+footer .content .right a {
   text-align: center;
-  color: rgba(0, 0, 255, 0.526);
   margin-left: 10px;
   width: 54px;
   height: 54px;
   line-height: 54px;
   border-radius: 50%;
-  background-color: rgba(255, 228, 196, 0.296);
+  background-color: unset;
   transition: all 0.5s;
 }
-footer .content a:hover i {
-  color: white;
-  background-color: rgba(0, 255, 255, 0.672);
+footer .content .right a:hover {
+  color: red;
 }/*# sourceMappingURL=main.css.map */
