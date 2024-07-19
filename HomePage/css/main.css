@@ -87,10 +87,13 @@ header {
   top: 0;
   background-color: #590010;
 }
+header .col-11 {
+  padding: 5px;
+}
 header .navbar-brand {
   display: flex;
   gap: 10px;
-  width: 5%;
+  width: 56px;
   align-items: center;
 }
 header .navbar-brand img {
@@ -115,17 +118,23 @@ header .navbar-collapse .search .btnSearch {
   transform: translate(-7px, 3px);
   background: none;
 }
-header .navbar-collapse .cart {
+header .col-1 {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+header .col-1 .cart {
   padding: 3px 10px;
   border-radius: 10px;
   background: red;
   border: 0;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  margin-right: 5px;
 }
-header .navbar-collapse .cart .info_cart {
+header .col-1 .cart .info_cart {
   position: relative;
 }
-header .navbar-collapse .cart .info_cart #soLuongDaChon {
+header .col-1 .cart .info_cart #soLuongDaChon {
   position: absolute;
   right: -5px;
   bottom: 0;
@@ -136,12 +145,12 @@ header .navbar-collapse .cart .info_cart #soLuongDaChon {
   font-size: 11px;
   font-weight: 800;
 }
-header .navbar-collapse .icon_theme i {
+header .col-1 .icon_theme i {
   cursor: pointer;
   z-index: 1;
   opacity: 0;
 }
-header .navbar-collapse .icon_theme i.active {
+header .col-1 .icon_theme i.active {
   opacity: 1;
   z-index: 2;
 }
@@ -167,6 +176,9 @@ header .navbar-collapse .icon_theme i.active {
   background-color: rgb(243, 138, 212);
 }
 
+#product .container {
+  margin-left: 16%;
+}
 #product #filter_pet .filter_content {
   background-color: pink;
   border-radius: 15px;

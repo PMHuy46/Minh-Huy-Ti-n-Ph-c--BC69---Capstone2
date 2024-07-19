@@ -2,16 +2,16 @@ const sun = document.querySelector('.gg-sun');
 const moon = document.querySelector('.gg-moon');
 const body = document.querySelector('body');
 
-// sun.addEventListener('click', function () {
-//     this.classList.toggle('active');
-//     moon.classList.toggle('active');
-//     body.classList.toggle('bg-dark');
-// });
-// moon.addEventListener('click', function () {
-//     sun.classList.toggle('active');
-//     this.classList.toggle('active');
-//     body.classList.toggle('bg-dark');
-// });
+sun.addEventListener('click', function () {
+    this.classList.toggle('active');
+    moon.classList.toggle('active');
+    body.classList.toggle('bg-dark');
+});
+moon.addEventListener('click', function () {
+    sun.classList.toggle('active');
+    this.classList.toggle('active');
+    body.classList.toggle('bg-dark');
+});
 
 
 
@@ -51,7 +51,7 @@ function renderDSPet(arr) {
             quantity,
         } = item
         content += `
-        <div class="col-3 pet">
+        <div class="list_content">
             <div class="pet_item">
                 <div class="pet_img">
                     <img src="${img}" alt="">
@@ -207,14 +207,14 @@ document.querySelector(`#thanhToanBill`).onclick = updateAPI;
 // filter
 //filter theo key
 async function filterByOption(value, type) {
-    let valueFind = removeVietnameseTones(value.toLowerCase().trim()); 
-    let typeFind = removeVietnameseTones(type.toLowerCase().trim()); 
+    let valueFind = removeVietnameseTones(value.toLowerCase().trim());
+    let typeFind = removeVietnameseTones(type.toLowerCase().trim());
     let ktra = typeFind.split(" ")
 
     let arrFiltered = []
     try {
         const data = await getValueOnMock();
-        if (ktra.length == 1) { 
+        if (ktra.length == 1) {
             arrFiltered = data.filter(item => {
                 let typeValue = removeVietnameseTones(item[`${ktra[0]}`].toLowerCase().trim());
                 return typeValue.includes(valueFind)
@@ -237,7 +237,7 @@ async function filterByOption(value, type) {
 
 //reset filter
 document.querySelector(`.resetFilter`).onclick = function () {
-    getValueOnMock().then(()=>{
+    getValueOnMock().then(() => {
         renderDSPet(DSfilter)
     })
 }
@@ -273,14 +273,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
     window.addEventListener('scroll', function () {
         const menu = document.getElementById('menu');
-        const ktra = document.getElementById('filter_pet');
-        const rect = ktra.getBoundingClientRect();
-        
-        // Kiểm tra xem menu đã cách mép trên 10px chưa
-        if (rect.top <= 120) {
+        const ktrtop = document.querySelector(`#product`);
+        const ktrabottom = document.querySelector(`footer`);
+        const checktop = ktrtop.getBoundingClientRect();
+        const checkBottom = ktrabottom.getBoundingClientRect();
+        const checkmenu = menu.getBoundingClientRect();
+
+        if (checktop.top <= 120) {
             menu.classList.add('fixed');
-        } else {
+        }
+        if (checkBottom.top <= 120 + checkmenu.height || checktop.top > 120) {
             menu.classList.remove('fixed');
         }
     });
+
+
 });

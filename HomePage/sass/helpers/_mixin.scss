@@ -1,0 +1,18 @@
+$screen :(
+    "sm":578,
+    "md":800,
+    "lg":1000,
+    "xl":1400,
+);
+@mixin response($screenName){
+    @if(map-has-key($map:$screen, $key: $screenName)){
+        $value: map-get($map: $screen, $key: $screenName);
+        
+        //
+        @media screen and (max-width :#{$value}px) {
+            @content ;
+        }
+    }@else{
+        @warn("Screen name không tồn tại")
+    }
+}

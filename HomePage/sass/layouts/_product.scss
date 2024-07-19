@@ -1,40 +1,73 @@
 #product {
+    .container {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        color: white;
+    }
 
     #filter_pet {
-        .filter_content {
-        &.fixed {
-            position: fixed;
-            top: 110px;
-            z-index: 1000;
-            width: 310px;
+        width: 300px;
+
+        @media (max-width:1400px) {
+            width: 260px;
         }
 
-            background-color: pink;
+        .filter_content {
+            background-color: #590010;
+            
             border-radius: 15px;
-            padding-bottom: 10px;
+            padding: 10px 0;
 
-            >li {
-                padding-top: 10px;
+            &.fixed {
+                position: fixed;
+                top: 110px;
+                z-index: 1000;
+                width: 300px;
+                transition: transform 5s ease-in-out;
+
+                @media (max-width:1400px) {
+                    width: 260px;
+                }
             }
 
             .title {
                 padding: 5px 30px;
-                font-size: 20px;
+                font-size: 20px; //ở đây
                 font-weight: 700;
+
+                @media (max-width:1400px) {
+                    font-size: 18px;
+                    @media (max-width:1200px) {
+                        padding-right: 0;
+                        @media (max-width:990px) {
+                            font-size: 16px;
+                            padding-left: 25px;
+                        }
+                    }
+                }
             }
 
             .filter_item {
                 margin: 0 3rem;
 
+                @media (max-width:990px) {
+                    margin-left: 40px;
+                }
                 >li:not(:has(>div)) {
                     margin: 10px 0 10px 4rem;
                     ;
                     font-weight: 600;
                     list-style: disc;
+
+                    @media (max-width:1400px) {
+                        font-size: 14px;
+                        @media (max-width:990px) {
+                            font-size: 14px;
+                        }
+                    }
                 }
             }
-
-
 
             .resetFilter {
                 @extend .btn-style;
@@ -45,73 +78,122 @@
 
     }
 
-    #filter_more {
-        display: flex;
-        justify-content: end;
+    #info_pet {
+        width: 75%;
+        @media (max-width:1400px) {
+            width: 80%;
+            // @media (max-width:1200px) {
+            //     margin-left: 40px;
+            // }
+        }
 
-        select {
+        #filter_more {
+            display: flex;
+            justify-content: end;
+
+            select {
+                border-radius: 15px;
+                padding: 10px 20px;
+                width: 23%;
+                @media (max-width:1400px) {
+                    width: 25%;
+                    @media (max-width:1200px) {
+                        width: 60%;
+                    }
+                }
+            }
+        }
+
+        .list_pet{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: start;
+            @media (max-width:1400px) {
+                justify-content: space-evenly;
+                }
+        }
+
+        .list_content {
+            padding: 10px 10px;
+            width: 25%;
+            @media (max-width:1400px) {
+                width: 30%;
+                @media (max-width:1200px) {
+                    width: 40%;
+                    @media (max-width:990px) {
+                        width: 50%;                        
+                        @media (max-width:768px) {
+                            width: 80%;                        
+                        }
+                    }
+                }
+            }
+        }
+
+        // nội dung của sp
+        .pet_item {
+            position: relative;
+            padding: 20px;
+            border: 1px solid;
             border-radius: 15px;
-            padding: 10px 20px;
-            width: 23%;
-        }
-    }
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            background-color: #590010;
+            @media (max-width:1400px) {
+                width: 95%;
+                @media (max-width:1200px) {
+                    width: 90%;
+                    @media (max-width:990px) {
+                        width: 100%;
+                    }
+                }
+            }
+            //  margin:15px 30px;
+            img {
+                width: 100%;
+            }
 
-    .col-3 {
-        padding: 10px 10px;
-    }
+            .pet_info {
+                padding-top: 10px;
 
-    .pet_item {
-        position: relative;
-        padding: 20px;
-        border: 1px solid;
-        border-radius: 15px;
-        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-        background-color: pink;
+                h4 {
+                    font-size: 20px;
+                    height: 50px;
+                }
 
-        //  margin:15px 30px;
-        img {
-            width: 100%;
-        }
+                div {
+                    display: flex;
+                    justify-content: space-between;
+                    height: 35px;
+                }
+            }
 
-        .pet_info {
-            padding-top: 10px;
-
-            h4 {
+            .quangCao {
+                position: absolute;
+                top: 20px;
+                right: 20px;
                 font-size: 20px;
-                height: 50px;
+                padding: 3px 3px 10px 10px;
+                line-height: 15px;
+                background-color: red;
+                color: yellow;
+                border-radius: 0 0 0 16px;
             }
 
-            div {
-                display: flex;
-                justify-content: space-between;
-                height: 35px;
+            .buyBtn {
+                @extend .btn-style;
             }
         }
 
-        .quangCao {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 20px;
-            padding: 3px 3px 10px 10px;
-            line-height: 15px;
-            background-color: red;
-            color: yellow;
-            border-radius: 0 0 0 16px;
+        // ẩn bớt sản phẩm 
+        .list_content:nth-child(n+9) {
+            display: none;
         }
 
-        .buyBtn {
-            @extend .btn-style;
+        #showMore {
+            @extend .btn-style
         }
     }
 
-    .pet:nth-child(n+9) {
-        display: none;
-    }
-
-    #showMore {
-        @extend .btn-style
-    }
 }
 
 .btn-style {

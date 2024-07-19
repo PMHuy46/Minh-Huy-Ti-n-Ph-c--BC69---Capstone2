@@ -4,11 +4,27 @@ header {
     z-index: 9999;
     width: 100%;
     top: 0;
-    background-color:#590010;
+    background-color: #590010;
+    margin: auto;
+
+
+    .col-11 {
+        padding: 5px;
+
+        @media (max-width:574px) {
+            width: 74%;
+
+            @media (max-width:550px) {
+                width: 65%;
+            }
+        }
+
+    }
+
     .navbar-brand {
         display: flex;
         gap: 10px;
-        width: 5%;
+        width: 56px;
         align-items: center;
 
         img {
@@ -17,6 +33,11 @@ header {
 
         span {
             font-size: 40px;
+            color: white;
+
+            @media (max-width:550px) {
+                font-size: 30px;
+            }
         }
     }
 
@@ -24,6 +45,11 @@ header {
         font-size: 20px;
         justify-content: end;
         gap: 10px;
+
+        .nav-link {
+            color: white;
+
+        }
 
         .search {
             position: relative;
@@ -38,12 +64,20 @@ header {
             }
         }
 
+    }
+
+    .col-1 {
+        display: flex;
+        align-items: center;
+        padding: 5px;
+
         .cart {
             padding: 3px 10px;
             border-radius: 10px;
             background: red;
             border: 0;
             box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+            margin-right: 5px;
 
             .info_cart {
                 position: relative;
@@ -76,5 +110,5 @@ header {
             }
         }
     }
-}
 
+}
