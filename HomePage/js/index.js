@@ -60,7 +60,10 @@ function renderDSPet(arr) {
                     <span>Mã SP: ${id}</span></span>
                     <h4 id="name">${name}</h4>
                     <div>
-                    <span id="gia" class="giamGia">Giá: ${price}</span>
+                    <span id="gia" class="giamGia">Giá: ${price.toLocaleString("vi", {
+                        style: 'currency',
+                        currency: 'VND',
+                    })}</span>
                     <span>Tồn: ${quantity}</span>
                     </div>
                 </div>
@@ -122,7 +125,10 @@ const payBill = async () => {
                     <div class="colDesc">
                         <span>Id: ${item.id}</span>
                         <span>${desc}</span>
-                        <p>Price: ${price}</p>
+                        <p>Price: ${price.toLocaleString("vi", {
+                            style: 'currency',
+                            currency: 'VND',
+                        })}</p>
                     </div>
                 </td>
                 <td>
@@ -143,7 +149,10 @@ const payBill = async () => {
 
     }
     document.querySelector(`#billInfo`).innerHTML = content
-    document.querySelector(`#tongTien`).innerHTML = priceBill
+    document.querySelector(`#tongTien`).innerHTML = `${priceBill.toLocaleString("vi", {
+        style: 'currency',
+        currency: 'VND',
+    })}`
 }
 
 document.querySelector(`#payCart`).onclick = payBill
@@ -165,7 +174,10 @@ const addSP = (index, soLuong = 1) => {
         document.querySelector(`#soLuongDaChon`).innerHTML = count
         document.querySelector(`#soLuong${index}`).value = DSMua[index].inCart
         priceBill += DSMua[index].price * soLuong
-        document.querySelector(`#tongTien`).innerHTML = priceBill
+        document.querySelector(`#tongTien`).innerHTML = `${priceBill.toLocaleString("vi", {
+        style: 'currency',
+        currency: 'VND',
+    })}`
     }
 }
 
@@ -275,17 +287,21 @@ document.addEventListener("DOMContentLoaded", function () {
         const menu = document.getElementById('menu');
         const ktrtop = document.querySelector(`#product`);
         const ktrabottom = document.querySelector(`footer`);
-        const checktop = ktrtop.getBoundingClientRect();
-        const checkBottom = ktrabottom.getBoundingClientRect();
+        const productvt = ktrtop.getBoundingClientRect();
+        const footervt = ktrabottom.getBoundingClientRect();
         const checkmenu = menu.getBoundingClientRect();
 
-        if (checktop.top <= 120) {
+        console.log(footervt.top)
+        if (productvt.top <= 110) {
             menu.classList.add('fixed');
         }
-        if (checkBottom.top <= 120 + checkmenu.height || checktop.top > 120) {
+        if (footervt.top <= checkmenu.height + 200 || productvt.top > 120) {
             menu.classList.remove('fixed');
+            
         }
+
     });
 
 
 });
+// ||  footervt.top <= 120 - productvt.height

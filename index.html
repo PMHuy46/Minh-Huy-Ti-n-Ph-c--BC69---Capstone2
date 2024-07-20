@@ -108,7 +108,7 @@
     <section id="product" class="my-5">
         <div class="container">
             <div id="filter_pet">
-                <ul class="filter_content " id="menu">
+                    <ul class="filter_content " id="menu">
                     <li>
                         <div class="title">
                             <a href="" class="filterByValue" title="bestSale">Best Saler</a>
@@ -160,6 +160,7 @@
                         </div>
                     </li>
                 </ul>
+                
             </div>
             <div class="list_item" id="info_pet">
                 <div id="filter_more">
@@ -174,7 +175,7 @@
                 </div>
                 <div class="text-center my-5">
                     <div class="button">
-                        <button id="showMore" onclick=""><span>Show More</span></button>
+                        <button id="showMore" onclick=""><span>Show more</span></button>
                     </div>
                 </div>
             </div>
@@ -277,8 +278,9 @@
 
     <script>
         $('#showMore').click(function () {
-            $('.list_pet .list_content:hidden').slice(0, 4).slideDown();
-            if ($(".list_pet .col-3:hidden").length == 0) {
+            visibleItemCount = $('.list_pet .list_content:visible').length/2;
+            $('.list_pet .list_content:hidden').slice(0, visibleItemCount).slideDown();
+            if ($(".list_pet .list_content:hidden").length == 0) {
                 $("#showMore").fadeOut('slow');
             }
         });

@@ -6,29 +6,39 @@
         color: white;
     }
 
+
+
     #filter_pet {
         width: 300px;
 
         @media (max-width:1400px) {
-            width: 260px;
+            width: 277px;
+
+            @media (max-width:1200px) {
+                width: 277px
+            }
         }
 
         .filter_content {
             background-color: #590010;
-            
+            width: 300px;
             border-radius: 15px;
             padding: 10px 0;
+            // position: absolute;
+
+            @media (max-width:1400px) {
+                width: 260px;
+
+                @media (max-width:1200px) {
+                    width: 277px
+                }
+            }
 
             &.fixed {
                 position: fixed;
                 top: 110px;
                 z-index: 1000;
-                width: 300px;
                 transition: transform 5s ease-in-out;
-
-                @media (max-width:1400px) {
-                    width: 260px;
-                }
             }
 
             .title {
@@ -36,10 +46,16 @@
                 font-size: 20px; //ở đây
                 font-weight: 700;
 
+                @media (max-height:747px) {
+                    padding: 1px 30px;
+                }
+
                 @media (max-width:1400px) {
                     font-size: 18px;
+
                     @media (max-width:1200px) {
                         padding-right: 0;
+
                         @media (max-width:990px) {
                             font-size: 16px;
                             padding-left: 25px;
@@ -54,14 +70,20 @@
                 @media (max-width:990px) {
                     margin-left: 40px;
                 }
+
                 >li:not(:has(>div)) {
                     margin: 10px 0 10px 4rem;
-                    ;
                     font-weight: 600;
                     list-style: disc;
 
+                    @media (max-height:747px) {
+                        margin-top: 5px;
+                        margin-bottom: 5px;
+                    }
+
                     @media (max-width:1400px) {
                         font-size: 14px;
+
                         @media (max-width:990px) {
                             font-size: 14px;
                         }
@@ -72,7 +94,6 @@
             .resetFilter {
                 @extend .btn-style;
                 border: 0;
-
             }
         }
 
@@ -80,11 +101,13 @@
 
     #info_pet {
         width: 75%;
+
         @media (max-width:1400px) {
             width: 80%;
-            // @media (max-width:1200px) {
-            //     margin-left: 40px;
-            // }
+
+            @media (max-width:1200px) {
+                width: 68%;
+            }
         }
 
         #filter_more {
@@ -94,36 +117,35 @@
             select {
                 border-radius: 15px;
                 padding: 10px 20px;
-                width: 23%;
-                @media (max-width:1400px) {
-                    width: 25%;
-                    @media (max-width:1200px) {
-                        width: 60%;
-                    }
-                }
+                width: 182px;
             }
         }
 
-        .list_pet{
+        .list_pet {
             display: flex;
             flex-wrap: wrap;
             justify-content: start;
-            @media (max-width:1400px) {
+
+            @media (max-width:1200px) {
                 justify-content: space-evenly;
-                }
+            }
         }
 
         .list_content {
             padding: 10px 10px;
             width: 25%;
+
             @media (max-width:1400px) {
                 width: 30%;
+
                 @media (max-width:1200px) {
                     width: 40%;
+
                     @media (max-width:990px) {
-                        width: 50%;                        
+                        width: 50%;
+
                         @media (max-width:768px) {
-                            width: 80%;                        
+                            width: 80%;
                         }
                     }
                 }
@@ -138,15 +160,19 @@
             border-radius: 15px;
             box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
             background-color: #590010;
+
             @media (max-width:1400px) {
                 width: 95%;
+
                 @media (max-width:1200px) {
                     width: 90%;
+
                     @media (max-width:990px) {
                         width: 100%;
                     }
                 }
             }
+
             //  margin:15px 30px;
             img {
                 width: 100%;
@@ -185,8 +211,15 @@
         }
 
         // ẩn bớt sản phẩm 
-        .list_content:nth-child(n+9) {
-            display: none;
+        .list_content {
+            &:nth-child(n+9) {
+                display: none;
+            }
+            @media (max-width:1400px){
+                &:nth-child(n+7){
+                    display: none;
+                }
+            }
         }
 
         #showMore {
