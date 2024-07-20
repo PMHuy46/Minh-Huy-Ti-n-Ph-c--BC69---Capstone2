@@ -24,7 +24,6 @@
             width: 300px;
             border-radius: 15px;
             padding: 10px 0;
-            // position: absolute;
 
             @media (max-width:1400px) {
                 width: 260px;
@@ -43,7 +42,7 @@
 
             .title {
                 padding: 5px 30px;
-                font-size: 20px; //ở đây
+                font-size: 20px; 
                 font-weight: 700;
 
                 @media (max-height:747px) {
@@ -173,23 +172,34 @@
                 }
             }
 
-            //  margin:15px 30px;
             img {
                 width: 100%;
             }
 
             .pet_info {
                 padding-top: 10px;
-
-                h4 {
+                height:220px;
+                #name {
                     font-size: 20px;
+                    font-weight: 700;
                     height: 50px;
+                    line-height: 30px;
+                    vertical-align: middle;
+                }
+
+                .descSp{
+                    margin-bottom: 10px;
                 }
 
                 div {
                     display: flex;
+                    flex-wrap: wrap;
                     justify-content: space-between;
                     height: 35px;
+                    #gia{
+                        font-size: 22px;
+                        font-weight: 600;
+                    }
                 }
             }
 
@@ -237,5 +247,3 @@
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     color: yellow;
 }
-
-//<i class="fa-solid fa-tag"></i> giảm giá

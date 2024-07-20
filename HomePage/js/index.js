@@ -13,14 +13,33 @@ moon.addEventListener('click', function () {
     body.classList.toggle('bg-dark');
 });
 
-
-
-let DSMua = []
+let DSMua = [];
 let count = 0
 let priceBill = 0
 let DSfilter = []
 
-//get and render ds từ 
+// lưu danh sách mua vào localstorage
+const savelocalstorage = (key = "DsSpMua", value = DSMua) => {
+    let stringJSON = JSON.stringify(value)
+    localStorage.setItem(key, stringJSON)
+}
+
+// lấy ds có sẵn từ localstorge
+const getlocalstorage = (key = "DsSpMua") => {
+    let dataLocal = localStorage.getItem(key)
+    if (dataLocal) {
+        let reverData = JSON.parse(dataLocal)
+        DSMua = reverData;
+        for (item of DSMua) {
+            let { inCart } = item
+            count += inCart
+        }
+        document.querySelector(`#soLuongDaChon`).innerHTML = `${count}`
+    }
+}
+getlocalstorage()
+
+//get and render ds từ api
 async function getValueOnMock() {
     try {
         let result = await axios({
@@ -38,7 +57,7 @@ getValueOnMock().then(() => {
     renderDSPet(DSfilter)
 })
 
-function renderDSPet(arr) {
+function renderDSPet(arr) { 
     let content = ""
 
     for (item of arr) {
@@ -49,6 +68,7 @@ function renderDSPet(arr) {
             bestSale,
             id,
             quantity,
+            desc,
         } = item
         content += `
         <div class="list_content">
@@ -57,14 +77,15 @@ function renderDSPet(arr) {
                     <img src="${img}" alt="">
                 </div>
                 <div class="pet_info">
-                    <span>Mã SP: ${id}</span></span>
-                    <h4 id="name">${name}</h4>
+                    <span class = "maSp">Mã SP: ${id}</span></span>
+                    <p id="name">${name}</p>
+                    <p class = "descSp">Mô tả sơ sơ: ${desc.slice(0,25)} ...</p>
                     <div>
-                    <span id="gia" class="giamGia">Giá: ${price.toLocaleString("vi", {
-                        style: 'currency',
-                        currency: 'VND',
-                    })}</span>
                     <span>Tồn: ${quantity}</span>
+                    <span id="gia" class="giamGia">Giá: ${price.toLocaleString("vi", {
+                    style: 'currency',
+                    currency: 'VND',
+                    })}</span>
                     </div>
                 </div>
                 <div class="d-flex justify-content-end">
@@ -101,6 +122,7 @@ function muaSP(idSP, price) {
         count += 1
     }
     document.querySelector(`#soLuongDaChon`).innerHTML = `${count}`
+    savelocalstorage()
 }
 
 //btn thanh toán
@@ -126,9 +148,9 @@ const payBill = async () => {
                         <span>Id: ${item.id}</span>
                         <span>${desc}</span>
                         <p>Price: ${price.toLocaleString("vi", {
-                            style: 'currency',
-                            currency: 'VND',
-                        })}</p>
+                style: 'currency',
+                currency: 'VND',
+            })}</p>
                     </div>
                 </td>
                 <td>
@@ -146,7 +168,6 @@ const payBill = async () => {
     }
     catch (error) {
         console.log(error)
-
     }
     document.querySelector(`#billInfo`).innerHTML = content
     document.querySelector(`#tongTien`).innerHTML = `${priceBill.toLocaleString("vi", {
@@ -175,11 +196,14 @@ const addSP = (index, soLuong = 1) => {
         document.querySelector(`#soLuong${index}`).value = DSMua[index].inCart
         priceBill += DSMua[index].price * soLuong
         document.querySelector(`#tongTien`).innerHTML = `${priceBill.toLocaleString("vi", {
-        style: 'currency',
-        currency: 'VND',
-    })}`
+            style: 'currency',
+            currency: 'VND',
+        })}`
     }
+    savelocalstorage()
 }
+
+
 
 //update sau khi thanh toán
 const updateAPI = async () => {
@@ -213,11 +237,12 @@ const updateAPI = async () => {
     document.querySelector(`#soLuongDaChon`).innerHTML = `0`
     document.querySelector(`#billInfo`).innerHTML = ``
     document.querySelector(`#tongTien`).innerHTML = `0`
+    savelocalstorage()
 }
 document.querySelector(`#thanhToanBill`).onclick = updateAPI;
 
 // filter
-//filter theo key
+// filter theo key
 async function filterByOption(value, type) {
     let valueFind = removeVietnameseTones(value.toLowerCase().trim());
     let typeFind = removeVietnameseTones(type.toLowerCase().trim());
@@ -263,7 +288,7 @@ function sapXepDS(x, arr = DSfilter) {
 document.addEventListener("DOMContentLoaded", function () {
     let links = document.querySelectorAll(".filterByValue");
     let selectFil = document.querySelectorAll(".form-select");
-
+    // thêm onclick cho thẻ select
     selectFil.forEach(function (option) {
         option.addEventListener("click", function (event) {
             event.preventDefault();
@@ -282,7 +307,7 @@ document.addEventListener("DOMContentLoaded", function () {
             })
         });
     });
-
+    // fixed menu filter
     window.addEventListener('scroll', function () {
         const menu = document.getElementById('menu');
         const ktrtop = document.querySelector(`#product`);
@@ -291,17 +316,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const footervt = ktrabottom.getBoundingClientRect();
         const checkmenu = menu.getBoundingClientRect();
 
-        console.log(footervt.top)
-        if (productvt.top <= 110) {
+        if (productvt.top <= 110 && productvt.height >= checkmenu.height + 100) {
             menu.classList.add('fixed');
         }
         if (footervt.top <= checkmenu.height + 125 || productvt.top > 120) {
             menu.classList.remove('fixed');
-            
         }
-
+        //không biết làm sao để menu nó dừng lại ngay footer có gì memtor chỉ giúp em
     });
-
-
 });
-// ||  footervt.top <= 120 - productvt.height
