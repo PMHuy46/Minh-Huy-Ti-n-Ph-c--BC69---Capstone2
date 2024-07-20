@@ -295,7 +295,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (productvt.top <= 110) {
             menu.classList.add('fixed');
         }
-        if (footervt.top <= checkmenu.height + 200 || productvt.top > 120) {
+        if (footervt.top <= checkmenu.height + 125 || productvt.top > 120) {
             menu.classList.remove('fixed');
             
         }
