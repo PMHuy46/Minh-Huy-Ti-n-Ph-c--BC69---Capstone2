@@ -237,6 +237,7 @@ const updateAPI = async () => {
     document.querySelector(`#soLuongDaChon`).innerHTML = `0`
     document.querySelector(`#billInfo`).innerHTML = ``
     document.querySelector(`#tongTien`).innerHTML = `0`
+    count=0;
     savelocalstorage()
 }
 document.querySelector(`#thanhToanBill`).onclick = updateAPI;
