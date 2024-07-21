@@ -20,12 +20,10 @@ async function getAllPets() {
       method: "GET",
       url: "https://6680c8e056c2c76b495cbc78.mockapi.io/product",
     });
-    console.log(response.data)
     document.getElementById("renderCards").innerHTML = renderPetCards(
       response.data
     );
 
-    console.log(response.data);
   } catch (error) {
     showError("Có lỗi xảy ra vui lòng thử lại !");
   }
@@ -111,7 +109,9 @@ const renderPetCards = (petsArray) => {
 // Hàm thêm Pet
 const addPet = (event) => {
   event.preventDefault();
-
+  if (!validateForm()) {
+    return;
+  }
   const petData = getFormData();
 
   axios({
@@ -152,11 +152,9 @@ const editPet = async (petId) => {
     });
 
     const formFields = document.querySelectorAll(".form input, .form select");
-    console.log(formFields)
     formFields.forEach((field) => {
-      const { id ,value} = field;
+      const { id } = field;
       console.log(id,response.data[id])
-
       field.value = response.data[id];
     });
   } catch (error) {
@@ -166,6 +164,10 @@ const editPet = async (petId) => {
 
 // Hàm nút cập nhật
 const updatePet = async () => {
+    if (!validateForm()) {
+        return;
+      }
+
   try {
     const petData = getFormData();
 
