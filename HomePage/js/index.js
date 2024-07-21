@@ -81,11 +81,11 @@ function renderDSPet(arr) {
                     <p id="name">${name}</p>
                     <p class = "descSp">Mô tả sơ sơ: ${desc.slice(0,25)} ...</p>
                     <div>
-                    <span>Tồn: ${quantity}</span>
-                    <span id="gia" class="giamGia">Giá: ${price.toLocaleString("vi", {
+                    <p>Tồn: ${quantity}</p>
+                    <p id="gia" class="giamGia">Giá: ${price.toLocaleString("vi", {
                     style: 'currency',
                     currency: 'VND',
-                    })}</span>
+                    })}</p>
                     </div>
                 </div>
                 <div class="d-flex justify-content-end">

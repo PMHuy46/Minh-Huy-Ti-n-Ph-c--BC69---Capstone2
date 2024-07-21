@@ -454,10 +454,10 @@ header .col-1 .icon_theme i.active {
   }
 }
 #product #info_pet .pet_item .pet_info div {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
   height: 35px;
+}
+#product #info_pet .pet_item .pet_info div p {
+  margin-bottom: 0;
 }
 #product #info_pet .pet_item .pet_info div #gia {
   font-size: 22px;

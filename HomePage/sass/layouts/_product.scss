@@ -238,11 +238,13 @@
                 }
 
                 div {
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: space-between;
+                    // display: flex;
+                    // flex-wrap: wrap;
+                    // justify-content: space-between;
                     height: 35px;
-
+                    p{
+                        margin-bottom: 0;
+                    }
                     #gia {
                         font-size: 22px;
                         font-weight: 600;
