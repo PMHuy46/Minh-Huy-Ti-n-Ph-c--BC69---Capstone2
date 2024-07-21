@@ -119,7 +119,7 @@ const renderPetCards = (petsArray) => {
 // Hàm thêm Pet
 const addPet = (event) => {
     event.preventDefault();
-    if (validateForm()) {
+    if (!validateForm()) {
         return;
     }
     const petData = getFormData();
