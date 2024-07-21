@@ -18,7 +18,7 @@ async function getAllPets() {
   try {
     const response = await axios({
       method: "GET",
-      url: "https://6692558e346eeafcf46c934b.mockapi.io/CAPSTONE2",
+      url: "https://6680c8e056c2c76b495cbc78.mockapi.io/product",
     });
 
     document.getElementById("renderCards").innerHTML = renderPetCards(
@@ -109,7 +109,7 @@ const addPet = (event) => {
 
   axios({
     method: "POST",
-    url: "https://6692558e346eeafcf46c934b.mockapi.io/CAPSTONE2",
+    url: "https://6680c8e056c2c76b495cbc78.mockapi.io/product",
     data: petData,
   })
     .then((response) => {
@@ -128,7 +128,7 @@ const deletePet = async (petId) => {
   try {
     const response = await axios({
       method: "DELETE",
-      url: `https://6692558e346eeafcf46c934b.mockapi.io/CAPSTONE2/${petId}`,
+      url: `https://6680c8e056c2c76b495cbc78.mockapi.io/product/${petId}`,
     });
 
     getAllPets();
@@ -142,7 +142,7 @@ const editPet = async (petId) => {
   try {
     const response = await axios({
       method: "GET",
-      url: `https://6692558e346eeafcf46c934b.mockapi.io/CAPSTONE2/${petId}`,
+      url: `https://6680c8e056c2c76b495cbc78.mockapi.io/product/${petId}`,
     });
 
     const formFields = document.querySelectorAll(".form input, .form select");
@@ -163,7 +163,7 @@ const updatePet = async () => {
 
     const response = await axios({
       method: "PUT",
-      url: `https://6692558e346eeafcf46c934b.mockapi.io/CAPSTONE2/${petData.id}`,
+      url: `https://6680c8e056c2c76b495cbc78.mockapi.io/product/${petData.id}`,
       data: petData,
     });
 
@@ -185,7 +185,7 @@ const searchPets = async () => {
   try {
     const response = await axios({
       method: "GET",
-      url: "https://6692558e346eeafcf46c934b.mockapi.io/CAPSTONE2",
+      url: "https://6680c8e056c2c76b495cbc78.mockapi.io/product",
     });
 
     const filteredPets = response.data.filter((pet) =>
