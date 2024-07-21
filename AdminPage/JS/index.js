@@ -22,7 +22,7 @@ async function getAllPets() {
         });
         document.getElementById("renderCards").innerHTML = renderPetCards(
             response.data
-        );
+          );
 
     } catch (error) {
         showError("Có lỗi xảy ra vui lòng thử lại !");
@@ -39,11 +39,11 @@ const getFormData = () => {
     formFields.forEach((field) => {
         const { id, value } = field;
         formData[id] = value;
-        if (value == "true") {
-            formData[id] = true
-        } else if(value == "false") {
-            formData[id] = false
-        }
+        // if (value == "true") {
+        //     formData[id] = true
+        // } else if (value == "false") {
+        //     formData[id] = false
+        // }
     });
 
     return formData;
@@ -75,8 +75,9 @@ const renderPetCards = (petsArray) => {
         content += `
     <div class="col-md-3 mt-4">
       <div class="card text-dark text-center">
-        <img src="${img}" class="card-img-top mx-auto mt-3" style="width: 200px; height: 130px; object-fit: cover; " alt="id không tồn tại hoặc là lỗi rồi">
+        <img src="${img}" class="card-img-top mx-auto mt-3" style="width: 200px; height: 130px; object-fit: cover; " alt="hình đang load chờ xíu">
         <div class="card-body">
+        <p>id ${id}</p>
           <h5 class="card-title">${name}</h5>
           <p class="card-text"><strong>Loại:</strong> ${type}</p>
           <p class="card-text"><strong>Giá:</strong> ${(
@@ -117,28 +118,25 @@ const renderPetCards = (petsArray) => {
 };
 
 // Hàm thêm Pet
-const addPet = (event) => {
-    event.preventDefault();
-    if (!validateForm()) {
-        return;
-    }
+const addPet = () => {
+    // if (!validateForm()) {
+    //     return;
+    // }
     const petData = getFormData();
 
-    axios({
+     axios({
         method: "POST",
         url: "https://6680c8e056c2c76b495cbc78.mockapi.io/product",
         data: petData,
+    }).then(() => {
+        getAllPets();
     })
-        .then((response) => {
-            getAllPets();
-        })
-        .catch((error) => {
+        .catch(() => {
             showError("Có lỗi xảy ra vui lòng thử lại !");
         });
 
-    event.target.reset();
 };
-document.querySelector(".form").onsubmit = addPet;
+document.querySelector("#addpet").onclick = addPet;
 
 // Hàm xóa Pet
 const deletePet = async (petId) => {
