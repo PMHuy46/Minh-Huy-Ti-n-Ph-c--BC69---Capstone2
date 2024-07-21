@@ -70,7 +70,7 @@ const getFormData = () => {
       content += `
         <div class="col-md-3 mt-4">
           <div class="card text-dark text-center">
-            <img src="${img}" class="card-img-top mx-auto mt-3" style="width: 200px; height: 130px; object-fit: cover; ">
+            <img src="${img}" class="card-img-top mx-auto mt-3" style="width: 200px; height: 130px; object-fit: cover; " alt="id không tồn tại">
             <div class="card-body">
               <h5 class="card-title">${name}</h5>
               <p class="card-text"><strong>Giống:</strong> ${species}</p>

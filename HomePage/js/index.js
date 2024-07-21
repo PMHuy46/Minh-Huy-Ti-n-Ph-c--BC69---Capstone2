@@ -319,7 +319,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (productvt.top <= 110 && productvt.height >= checkmenu.height + 100) {
             menu.classList.add('fixed');
         }
-        if (footervt.top <= checkmenu.height + 125 || productvt.top > 120) {
+        if (footervt.top <= checkmenu.height + 110 || productvt.top > 120) {
             menu.classList.remove('fixed');
         }
         //không biết làm sao để menu nó dừng lại ngay footer có gì memtor chỉ giúp em
