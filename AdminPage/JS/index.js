@@ -87,7 +87,7 @@ const renderPetCards = (petsArray) => {
             <div class='m-4'>
               <button id='xoa' onclick= "deletePet(${id})" class='btn'>Xóa</button>
 
-              <button id='sua' onclick="editPet(${id})" class='btn'>Sửa</button>
+              <button id='sua' onclick="editPet(${id})" class='btn'><a href="#formInput" title="Chó species">Sửa</a></button>
             </div>
           </div>
         </div>
