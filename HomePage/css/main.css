@@ -278,7 +278,7 @@ header .col-1 .icon_theme i.active {
 }
 @media (max-width: 1400px) {
   #product #filter_pet .filter_content .title {
-    font-size: 18px;
+    font-size: 17px;
   }
 }
 @media (max-width: 1400px) and (max-width: 1200px) {
