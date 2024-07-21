@@ -1,9 +1,9 @@
 function checkEmptyValue(value, errorEle) {
-    console.log(`Value: "${value}", Error Element:, errorEle`);
+    // console.log(`Value: "${value}", Error Element:, errorEle`);
     if (
-      value.trim() === "" ||
-      value === "Loại thú cưng" ||
-      value === "Best sale"
+      value.trim() == "" ||
+      value == "Loại thú cưng" ||
+      value == "Best sale"
     ) {
       errorEle.textContent = "Vui lòng không bỏ trống trường này!";
       errorEle.classList.add("error-message");

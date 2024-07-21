@@ -8,8 +8,10 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-    <link rel="icon" href="https://lh3.google.com/u/0/d/1XJIp9pZ4vKf1jVBAGVM1IjcatUxf5Yl1=w1651-h915-iv1">
-
+    <link
+      rel="icon"
+      href="https://lh3.google.com/u/0/d/1XJIp9pZ4vKf1jVBAGVM1IjcatUxf5Yl1=w1651-h915-iv1"
+    />
 
     <!-- Bootstrap CSS v5.2.1 -->
     <link
@@ -45,7 +47,10 @@
     <header>
       <div class="container">
         <div class="navbar-brand" href="#">
-          <img class="logo" src="https://lh3.google.com/u/0/d/1XJIp9pZ4vKf1jVBAGVM1IjcatUxf5Yl1=w1651-h915-iv1" alt="logo" />
+          <img
+            class="logo"
+            src="https://lh3.google.com/u/0/d/1XJIp9pZ4vKf1jVBAGVM1IjcatUxf5Yl1=w1651-h915-iv1"
+          />
           <h1>Admin Page Sen & Boss</h1>
         </div>
 
@@ -56,9 +61,7 @@
             </li>
 
             <li class="nav-item">
-              <a href="../index.html"
-                ><span>Home Page</span></a
-              >
+              <a href="../index.html"><span>Home Page</span></a>
             </li>
           </ul>
         </div>
@@ -66,8 +69,8 @@
     </header>
 
     <!-- form  -->
-    <section class="formThuCung" id="formInput">
-      <h2 class="text-center text-info fs-4 fw-normal">
+    <section class="formThuCung">
+      <h2 class="pt-4 text-center text-info fs-4 fw-normal">
         Form điền thông tin thú cưng
       </h2>
 
@@ -82,6 +85,7 @@
               id="name"
               placeholder="<Nhập tên thú cưng>"
             />
+            <span class="error-message"></span>
           </div>
 
           <!-- Price  -->
@@ -94,6 +98,7 @@
               aria-describedby="helpId"
               placeholder="<Nhập giá thú cưng>"
             />
+            <span class="error-message"></span>
           </div>
 
           <!-- origin  -->
@@ -105,6 +110,7 @@
               id="origin"
               placeholder="<Nhập xuất xứ của thú cưng>"
             />
+            <span class="error-message"></span>
           </div>
 
           <!-- img  -->
@@ -116,6 +122,7 @@
               id="img"
               placeholder="<Nhập link ảnh thú cưng>"
             />
+            <span class="error-message"></span>
           </div>
 
           <!-- desc  -->
@@ -127,17 +134,19 @@
               id="desc"
               placeholder="<Miêu tả ngắn cho thú cưng>"
             />
+            <span class="error-message"></span>
           </div>
 
-          <!-- species  -->
+          <!-- type  -->
           <div class="mb-3">
             <input
               autocomplete="off"
               type="text"
               class="form-control"
-              id="species"
+              id="type"
               placeholder="<Nhập giống loài của thú cưng>"
             />
+            <span class="error-message"></span>
           </div>
 
           <!-- best sale  -->
@@ -147,15 +156,17 @@
               <option value="true">True</option>
               <option value="false">False</option>
             </select>
+            <span class="error-message"></span>
           </div>
 
-          <!-- type  -->
+          <!-- species  -->
           <div class="mb-3">
-            <select class="form-select form-select-lg" id="type">
+            <select class="form-select form-select-lg" id="species">
               <option selected>Loại thú cưng</option>
               <option value="Chó">Chó</option>
               <option value="Mèo">Mèo</option>
             </select>
+            <span class="error-message"></span>
           </div>
 
           <!-- id  -->
@@ -192,6 +203,7 @@
 
         <div class="mb-3">
           <input
+            autocomplete="off"
             type="text"
             class="form-control"
             id="search"
@@ -251,7 +263,7 @@
       referrerpolicy="no-referrer"
     ></script>
     <script src="./UTIL/util.js"></script>
-    <script src="./VALIDATION/validation.js"></script>
+    <script src="./validation/validation.js"></script>
     <script src="./JS/index.js"></script>
   </body>
 </html>
