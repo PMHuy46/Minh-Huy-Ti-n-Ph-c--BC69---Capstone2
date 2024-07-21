@@ -68,30 +68,33 @@ const renderPetCards = (petsArray) => {
     }
 
     content += `
-        <div class="col-md-3 mt-4">
-          <div class="card text-dark text-center">
-            <img src="${img}" class="card-img-top mx-auto mt-3" style="width: 200px; height: 130px; object-fit: cover; " alt="id không tồn tại">
-            <div class="card-body">
-              <h5 class="card-title">${name}</h5>
-              <p class="card-text"><strong>Giống:</strong> ${species}</p>
-              <p class="card-text"><strong>Giá:</strong> ${(price*1).toLocaleString("vi", {
-                style: 'currency',
-                currency: 'VND',
-              })}</p>
-              <p class="card-text">${desc}</p>
-              <p class="card-text"><strong>Loài:</strong> ${type}</p>
-              <p class="card-text"><strong>Xuất xứ:</strong> ${origin}</p>
-              <p class="card-text"><strong>Best Sale:</strong> ${bestSale ? "Yes" : "No"
-      }</p>
-            </div>
-            <div class='m-4'>
-              <button id='xoa' onclick= "deletePet(${id})" class='btn'>Xóa</button>
-
-              <button id='sua' onclick="editPet(${id})" class='btn'><a href="#formInput" title="Chó species">Sửa</a></button>
-            </div>
-          </div>
+    <div class="col-md-3 mt-4">
+      <div class="card text-dark text-center">
+        <img src="${img}" class="card-img-top mx-auto mt-3" style="width: 200px; height: 130px; object-fit: cover; " alt="id không tồn tại">
+        <div class="card-body">
+          <h5 class="card-title">${name}</h5>
+          <p class="card-text"><strong>Giống:</strong> ${type}</p>
+          <p class="card-text"><strong>Giá:</strong> ${(
+            price * 1
+          ).toLocaleString("vi", {
+            style: "currency",
+            currency: "VND",
+          })}</p>
+          <p class="card-text">${desc}</p>
+          <p class="card-text"><strong>Loại:</strong> ${species}</p>
+          <p class="card-text"><strong>Xuất xứ:</strong> ${origin}</p>
+          <p class="card-text"><strong>Best Sale:</strong> ${
+            bestSale ? "Yes" : "No"
+          }</p>
         </div>
-      `;
+        <div class='m-4'>
+          <button id='xoa' onclick= "deletePet(${id})" class='btn'>Xóa</button>
+
+          <button id='sua' onclick="editPet(${id})" class='btn'>Sửa</button>
+        </div>
+      </div>
+    </div>
+  `;
 
     count++;
 
