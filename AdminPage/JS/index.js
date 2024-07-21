@@ -44,43 +44,45 @@ const getFormData = () => {
   return formData;
 };
 
-  // hàm renderCard
-  const renderPetCards = (petsArray) => {
-    let content = "";
-    let count = 0;
+// hàm renderCard
+const renderPetCards = (petsArray) => {
+  let content = "";
+  let count = 0;
 
-    petsArray.forEach((pet, index) => {
-      const {
-        id,
-        name,
-        price,
-        bestSale,
-        img,
-        desc,
-        type,
-        origin,
-        species,
-        quantity,
-      } = pet;
+  petsArray.forEach((pet, index) => {
+    const {
+      id,
+      name,
+      price,
+      bestSale,
+      img,
+      desc,
+      type,
+      origin,
+      species,
+      quantity,
+    } = pet;
 
-      if (count % 4 === 0) {
-        content += '<div class="row mb-4">';
-      }
+    if (count % 4 === 0) {
+      content += '<div class="row mb-4">';
+    }
 
-      content += `
+    content += `
         <div class="col-md-3 mt-4">
           <div class="card text-dark text-center">
             <img src="${img}" class="card-img-top mx-auto mt-3" style="width: 200px; height: 130px; object-fit: cover; " alt="id không tồn tại">
             <div class="card-body">
               <h5 class="card-title">${name}</h5>
               <p class="card-text"><strong>Giống:</strong> ${species}</p>
-              <p class="card-text"><strong>Giá:</strong> ${price}</p>
+              <p class="card-text"><strong>Giá:</strong> ${price.toLocaleString("vi", {
+                style: 'currency',
+                currency: 'VND',
+              })}</p>
               <p class="card-text">${desc}</p>
               <p class="card-text"><strong>Loài:</strong> ${type}</p>
               <p class="card-text"><strong>Xuất xứ:</strong> ${origin}</p>
-              <p class="card-text"><strong>Best Sale:</strong> ${
-                bestSale ? "Yes" : "No"
-              }</p>
+              <p class="card-text"><strong>Best Sale:</strong> ${bestSale ? "Yes" : "No"
+      }</p>
             </div>
             <div class='m-4'>
               <button id='xoa' onclick= "deletePet(${id})" class='btn'>Xóa</button>
@@ -91,15 +93,15 @@ const getFormData = () => {
         </div>
       `;
 
-      count++;
+    count++;
 
-      if (count % 4 === 0 || index === petsArray.length - 1) {
-        content += "</div>";
-      }
-    });
+    if (count % 4 === 0 || index === petsArray.length - 1) {
+      content += "</div>";
+    }
+  });
 
-    return content;
-  };
+  return content;
+};
 
 // Hàm thêm Pet
 const addPet = (event) => {
