@@ -74,7 +74,7 @@ const renderPetCards = (petsArray) => {
             <div class="card-body">
               <h5 class="card-title">${name}</h5>
               <p class="card-text"><strong>Giống:</strong> ${species}</p>
-              <p class="card-text"><strong>Giá:</strong> ${price.toLocaleString("vi", {
+              <p class="card-text"><strong>Giá:</strong> ${(price*1).toLocaleString("vi", {
                 style: 'currency',
                 currency: 'VND',
               })}</p>

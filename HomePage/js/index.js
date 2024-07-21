@@ -82,9 +82,9 @@ function renderDSPet(arr) {
                     <p class = "descSp">Mô tả sơ sơ: ${desc.slice(0,25)} ...</p>
                     <div>
                     <p>Tồn: ${quantity}</p>
-                    <p id="gia" class="giamGia">Giá: ${price.toLocaleString("vi", {
-                    style: 'currency',
-                    currency: 'VND',
+                    <p id="gia" class="giamGia">Giá: ${(price*1).toLocaleString("vi", {
+                        style: 'currency',
+                        currency: 'VND',
                     })}</p>
                     </div>
                 </div>
@@ -147,7 +147,7 @@ const payBill = async () => {
                     <div class="colDesc">
                         <span>Id: ${item.id}</span>
                         <span>${desc}</span>
-                        <p>Price: ${price.toLocaleString("vi", {
+                        <p>Price: ${(price*1).toLocaleString("vi", {
                 style: 'currency',
                 currency: 'VND',
             })}</p>
