@@ -20,7 +20,7 @@ async function getAllPets() {
       method: "GET",
       url: "https://6680c8e056c2c76b495cbc78.mockapi.io/product",
     });
-
+    console.log(response.data)
     document.getElementById("renderCards").innerHTML = renderPetCards(
       response.data
     );
@@ -30,6 +30,8 @@ async function getAllPets() {
     showError("Có lỗi xảy ra vui lòng thử lại !");
   }
 }
+
+getAllPets()
 
 // lấy dữ liệu data
 const getFormData = () => {
@@ -73,7 +75,7 @@ const renderPetCards = (petsArray) => {
         <img src="${img}" class="card-img-top mx-auto mt-3" style="width: 200px; height: 130px; object-fit: cover; " alt="id không tồn tại">
         <div class="card-body">
           <h5 class="card-title">${name}</h5>
-          <p class="card-text"><strong>Giống:</strong> ${type}</p>
+          <p class="card-text"><strong>Loại:</strong> ${type}</p>
           <p class="card-text"><strong>Giá:</strong> ${(
             price * 1
           ).toLocaleString("vi", {
@@ -81,17 +83,16 @@ const renderPetCards = (petsArray) => {
             currency: "VND",
           })}</p>
           <p class="card-text">${desc}</p>
-          <p class="card-text"><strong>Loại:</strong> ${species}</p>
+          <p class="card-text"><strong>Giống:</strong> ${species}</p>
           <p class="card-text"><strong>Xuất xứ:</strong> ${origin}</p>
+          <p class="card-text"><strong>Tồn kho:</strong> ${quantity}</p>
           <p class="card-text"><strong>Best Sale:</strong> ${
             bestSale ? "Yes" : "No"
           }</p>
         </div>
         <div class='m-4'>
           <button id='xoa' onclick= "deletePet(${id})" class='btn'>Xóa</button>
-
-                        <button id='sua' onclick="editPet(${id})" class='btn'><a href="#formInput">Sửa</a></button>
-
+          <button id='sua' onclick="editPet(${id})" class='btn'><a href="#formInput">Sửa</a></button>
         </div>
       </div>
     </div>
@@ -136,7 +137,6 @@ const deletePet = async (petId) => {
       method: "DELETE",
       url: `https://6680c8e056c2c76b495cbc78.mockapi.io/product/${petId}`,
     });
-
     getAllPets();
   } catch (error) {
     showError("Có lỗi xảy ra vui lòng thử lại !");
@@ -152,9 +152,11 @@ const editPet = async (petId) => {
     });
 
     const formFields = document.querySelectorAll(".form input, .form select");
-
+    console.log(formFields)
     formFields.forEach((field) => {
-      const { id } = field;
+      const { id ,value} = field;
+      console.log(id,response.data[id])
+
       field.value = response.data[id];
     });
   } catch (error) {
@@ -207,5 +209,4 @@ const searchPets = async () => {
   }
 };
 
-// Gọi hàm lấy full danh sách Pet 
-getAllPets();
+
