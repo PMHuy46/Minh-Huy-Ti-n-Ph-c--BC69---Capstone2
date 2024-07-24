@@ -194,7 +194,7 @@ const payBill = async () => {
                 </td>
                 <td>
                     <div class="colDesc">
-                        <span>Id: ${item.id}</span>
+                        <span>Mã Sp: ${item.id}</span>
                         <span>${desc}</span>
                         <p>Price: ${(price * 1).toLocaleString("vi", {
                 style: 'currency',
