@@ -487,8 +487,10 @@ header .col-1 .icon_theme i.active {
   font-size: 16px;
   background: red;
   border-radius: 10px;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   color: yellow;
+  border: 0;
+  margin: 5px 0;
 }
 
 #yourBill .table th,

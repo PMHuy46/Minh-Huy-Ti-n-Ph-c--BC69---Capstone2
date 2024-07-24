@@ -55,9 +55,10 @@ async function getValueOnMock() {
 
 getValueOnMock().then(() => {
     renderDSPet(DSfilter)
+
 })
 
-function renderDSPet(arr) { 
+function renderDSPet(arr) {
     let content = ""
 
     for (item of arr) {
@@ -70,8 +71,9 @@ function renderDSPet(arr) {
             quantity,
             desc,
         } = item
+        // 
         content += `
-        <div class="list_content">
+        <div class="list_content" >
             <div class="pet_item">
                 <div class="pet_img">
                     <img src="${img}" alt="">
@@ -79,16 +81,17 @@ function renderDSPet(arr) {
                 <div class="pet_info">
                     <span class = "maSp">Mã SP: ${id}</span></span>
                     <p id="name">${name}</p>
-                    <p class = "descSp">Mô tả sơ sơ: ${desc.slice(0,25)} ...</p>
+                    <p class = "descSp">Mô tả sơ sơ: ${desc.slice(0, 25)} ...</p>
                     <div>
                     <p>Tồn: ${quantity}</p>
-                    <p id="gia" class="giamGia">Giá: ${(price*1).toLocaleString("vi", {
-                        style: 'currency',
-                        currency: 'VND',
-                    })}</p>
+                    <p id="gia" class="giamGia">Giá: ${(price * 1).toLocaleString("vi", {
+            style: 'currency',
+            currency: 'VND',
+        })}</p>
                     </div>
                 </div>
-                <div class="d-flex justify-content-end">
+                <div class="d-flex flex-column">
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#thongTinSP" onclick="showInfo(${id})" class="buyBtn">thông tin</button>
                     <button type="button" onclick="muaSP(${id},${price})" class="buyBtn">Thêm vào giỏ</button>
                 </div>`
         if (bestSale) {
@@ -107,6 +110,7 @@ function renderDSPet(arr) {
     document.querySelector(`.list_pet`).innerHTML = content
 }
 
+
 //btn buy
 function muaSP(idSP, price) {
     let index = DSMua.findIndex(item => item.id === idSP)
@@ -123,6 +127,51 @@ function muaSP(idSP, price) {
     }
     document.querySelector(`#soLuongDaChon`).innerHTML = `${count}`
     savelocalstorage()
+}
+
+//hiện thông tin SP
+const showInfo = async (idSP) => {
+    try {
+        let resolve = await axios({
+            method: "GET",
+            url: `https://6680c8e056c2c76b495cbc78.mockapi.io/product/${idSP}`,
+        })
+
+        let { data } = resolve
+
+        let content = `
+        
+    <tbody id="billInfo">
+        <thead>
+            <tr>
+                <th colspan="2">Thông tin ${data.name}</th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr>
+                <td><img src="${data.img}" class="img-fluid" alt=""></td>
+                <td>
+                <p> Mã Sp: ${data.id}</p>
+                <h4>Tên: ${data.name}</h4>
+                <p>Là ${data.type} thuộc giống ${data.species} từ `
+        if (data.species == "other") {
+            content += `${data.species} vượt biên tới</p>`
+        } else {
+            content += `1 thực tại song song mò tới</p>`
+        }
+        content += `
+                <p>Mô tả: ${data.desc}</p>
+                </td>
+            </tr>
+        </tbody>
+    </tbody>
+        `
+        document.querySelector('#showInfo').innerHTML = content
+
+    } catch (error) {
+        console.log(error)
+    }
+
 }
 
 //btn thanh toán
@@ -147,7 +196,7 @@ const payBill = async () => {
                     <div class="colDesc">
                         <span>Id: ${item.id}</span>
                         <span>${desc}</span>
-                        <p>Price: ${(price*1).toLocaleString("vi", {
+                        <p>Price: ${(price * 1).toLocaleString("vi", {
                 style: 'currency',
                 currency: 'VND',
             })}</p>
@@ -237,7 +286,7 @@ const updateAPI = async () => {
     document.querySelector(`#soLuongDaChon`).innerHTML = `0`
     document.querySelector(`#billInfo`).innerHTML = ``
     document.querySelector(`#tongTien`).innerHTML = `0`
-    count=0;
+    count = 0;
     savelocalstorage()
 }
 document.querySelector(`#thanhToanBill`).onclick = updateAPI;
@@ -289,6 +338,8 @@ function sapXepDS(x, arr = DSfilter) {
 document.addEventListener("DOMContentLoaded", function () {
     let links = document.querySelectorAll(".filterByValue");
     let selectFil = document.querySelectorAll(".form-select");
+    // let infolist = document.querySelectorAll(`.list_content`);
+
     // thêm onclick cho thẻ select
     selectFil.forEach(function (option) {
         option.addEventListener("click", function (event) {
@@ -297,12 +348,14 @@ document.addEventListener("DOMContentLoaded", function () {
             sapXepDS(value)
         })
     })
+
     // Thêm sự kiện onclick cho từng thẻ <a>
     links.forEach(function (link) {
         link.addEventListener("click", function (event) {
             event.preventDefault();
 
             let { text, title } = link;
+            console.log(link)
             filterByOption(text, title).then(() => {
                 renderDSPet(DSfilter)
             })
